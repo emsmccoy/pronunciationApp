@@ -1,4 +1,22 @@
-## Repository Structure
+# Project structure
+
+## Why is so relevant the project structure?
+
+- To handle the project: track, debug, mantain, trace, test, etc..
+
+- Scale: keep it simple!
+
+- DDD: decouple
+
+- Stick to native structure
+
+- Tech debt
+
+- reuse code
+
+- create nice markdown documentation: onboarding, collaboration, etc..
+
+## Repository Structure `pronunciationApp`
 
 Your repository structure could look like this:
 

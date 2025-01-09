@@ -11,9 +11,7 @@
 | architecture: h2-boot-rest-react             |       |               |      |
 | markdown docs                                |       |               |      |
 | agile: metrics, goals, prioritation, sprints |       |               |      |
-|                                              |       |               |      |
-|                                              |       |               |      |
-|                                              |       |               |      |
+| architecture draft                           |       |               |      |
 
 ## Links
 
