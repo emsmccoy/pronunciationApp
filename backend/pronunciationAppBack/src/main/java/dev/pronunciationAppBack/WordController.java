@@ -2,6 +2,7 @@ package dev.pronunciationAppBack;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 import static org.antlr.v4.runtime.tree.xpath.XPath.findAll;
 
 @RestController
+@CrossOrigin
 public class WordController {
 
 
