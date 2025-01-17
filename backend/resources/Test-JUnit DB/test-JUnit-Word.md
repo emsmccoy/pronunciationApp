@@ -1,4 +1,4 @@
-# Test JUnit Word
+# Test JUnit Word H2 DB
 
 ## Test
 
@@ -98,7 +98,7 @@ Also, make sure you have the necessary dependencies in your `pom.xml` or `build.
 Here's what you need to add:
 
 1. H2 Database Dependency:
-Add this to your `pom.xml` if you're using Maven:
+   Add this to your `pom.xml` if you're using Maven:
 
 ```xml
 <dependency>
@@ -117,7 +117,7 @@ dependencies {
 ```
 
 2. Application Properties:
-Create a file named `application.properties` in your `src/test/resources` directory with the following content:
+   Create a file named `application.properties` in your `src/test/resources` directory with the following content:
 
 ```properties
 spring.datasource.url=jdbc:h2:mem:testdb
@@ -135,3 +135,41 @@ These settings will:
 - Configure an **in-memory H2 database for testing**
 - Set up the database to create tables based on your entities and drop them after the tests
 - Show SQL statements in the console, which can be helpful for debugging
+
+
+
+## Local DB
+
+
+
+First you must create the DB:
+
+```properties
+# DDL OPTIONS: create-drop, create, update, none, validate
+spring.jpa.hibernate.ddl-auto=create
+```
+
+Once created, change DDL to <mark>none</mark>
+
+```properties
+spring.application.name=pronunciationAppBack
+
+# H2 DATABASE SERVER
+spring.datasource.driverClassName=org.h2.Driver
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.h2.console.enabled=true
+
+# H2 IN MEMORY
+#spring.datasource.url=jdbc:h2:mem:testdb
+#spring.datasource.username=sa
+#spring.datasource.password=
+
+
+# H2 LOCAL DB SERVER
+spring.datasource.url=jdbc:h2:/home/albert/MyProjects/DataBase/pronunciationDB/pronunciationDB.db
+spring.datasource.username=albert
+spring.datasource.password=1234
+
+# DDL OPTIONS: create-drop, create, update, none, validate
+spring.jpa.hibernate.ddl-auto=none
+```
