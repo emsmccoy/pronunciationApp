@@ -1,4 +1,4 @@
-package dev.pronunciationAppBack;
+package dev.pronunciationAppBack.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

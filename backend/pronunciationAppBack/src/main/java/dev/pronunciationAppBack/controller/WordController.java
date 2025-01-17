@@ -1,8 +1,10 @@
-package dev.pronunciationAppBack;
+package dev.pronunciationAppBack.controller;
 
+import dev.pronunciationAppBack.model.Word;
+import dev.pronunciationAppBack.repository.WordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 // a kind of controller that connects the view with the business logic
@@ -10,6 +12,7 @@ import java.util.List;
 // rest controller just works with rest and JSON
 // controller works html and templates, for example: TH
 @RestController
+@RequestMapping("/api/words")
 public class WordController {
     // dependency injection: boot creates the object and injects it,
     // it also manages all the lifecycle
@@ -23,9 +26,9 @@ public class WordController {
         return "hello Emiliano, are you sleeping?";
     }
 
-    @GetMapping("/words")
+    @GetMapping
     // method signature (declaration): return the list of words to the view
-    public List<Word> getWords() {
+    public List<Word> getAllWords() {
             // assign the words from the repository to the list words
             List<Word> words = wordRepository.findAll();
             System.out.println("Number of words: " + words.size());
@@ -33,7 +36,30 @@ public class WordController {
                 System.out.println("Word: " + word);
             }
             return words;
-
     }
+
+    @GetMapping("/{id}")
+    public Word getWordById(@PathVariable String id) {
+        return wordRepository.getWordById(id);
+    }
+
+    @PostMapping
+    public Word createWord(@RequestBody Word word) {
+        return wordRepository.save(word);
+    }
+
+
+    @PutMapping("/{id}")
+    public Word updateWord(@PathVariable String id, @RequestBody Word word) {
+        return wordRepository.save(word);
+    }
+
+    @DeleteMapping("/words/{id}")
+    public String deleteWord(String id) {
+        wordRepository.deleteById(id);
+        return "Word deleted";
+    }
+
+
 
 }
