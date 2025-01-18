@@ -6,7 +6,35 @@
 
 `PronunciationApp` is a project designed <mark>to help users improve their English pronunciation using modern web technologies</mark>.
 
+The app has a visually appealing grid of cards, each representing a word to learn and practice[1]. These cards, inspired by Material UI's design, will display the word, its pronunciation, and a brief definition[1].
+
+For example, one card might feature:
+
+**Benevolent**
+/bɪˈnɛvələnt/
+*adjective*
+Well-meaning and kindly
+
+<div align="center" width="30%"> <table> <tr> <td align="center"> <h2>benevolent</h2> <p><i>/bɪˈnɛvələnt/</i></p> <p><strong>adjective</strong></p> <p>Well-meaning and kindly; charitable</p> <hr> <p><em>Example:</em> The benevolent donor gave millions to charity.</p> <p> <a href="#"><img src="https://img.shields.io/badge/🔊-Pronounce-4CAF50" alt="Pronounce"></a> <a href="#"><img src="https://img.shields.io/badge/🎯-Drill-008CBA" alt="Drill"></a> </p> </td> </tr> </table> </div>
+
+
+Users can interact with these cards in two primary ways:
+
+1. **Pronunciation**: Clicking on the card will trigger an audio playback of the word's correct pronunciation, allowing users to hear and mimic the sound[1].
+
+2. **Drill Mode**: A dedicated button on each card activates a drill feature. This mode might present various exercises, such as:
+   - Repeating the word
+   - Using it in a sentence
+   - Identifying synonyms or antonyms, how the english stress works, stress Patterns, etc ..
+
+The grid layout ensures easy navigation, while the card design provides a clean, focused presentation of each word[1]. This interactive approach combines visual, auditory, and kinesthetic learning methods, catering to different learning styles and enhancing vocabulary retention and pronunciation skills.
+
+Citations:
+[1] https://mui.com/material-ui/react-card/
+
 > This application combines a React frontend with a Spring Boot backend, utilizing H2 and PostgreSQL databases, RESTful APIs, and comprehensive testing with Postman, JUnit, and Jest.
+
+![image](https://github.com/user-attachments/assets/50731cd6-2cdf-4594-a62d-7df5f65cde50)
 
 ## Project Structure
 
@@ -16,25 +44,9 @@ The project is organized as a monorepo with three main branches:
 - **backend-spring-boot**
 - **master**
 
-## Tech Stack
-
-Our project leverages a robust set of technologies and development tools:
-
-| Category | Tools |
-|----------|-------|
-| Programming Languages & Frameworks | React, Spring Boot, Java, JavaScript |
-| Version Control | Git, GitHub, GitHub Worktree |
-| IDEs & Editors | Visual Studio Code, IntelliJ IDEA, MarkText, Sublime, Sublime Merge |
-| Documentation | Markdown, Shields.io, GitHub README |
-| Testing | Postman, JUnit, Jest |
-| Databases | H2 Database, PostgreSQL |
-| Development Tools | Maven, npm, Docker |
-| Cloud & Deployment | Heroku, AWS, Netlify |
-
-Citations:
-[1] https://github.com/badges/shields
-
 ### Directory Layout
+
+**Root**
 
 ```
 .
@@ -53,6 +65,72 @@ Citations:
 │   └── PRA_guide.md
 └── README.md
 ```
+Spring Boot Backend:
+
+```
+.
+├── HELP.md
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   └── resources
+│   └── test
+│       └── java
+└── target
+    ├── classes
+    │   ├── application.properties
+    │   └── dev
+    ├── generated-sources
+    │   └── annotations
+    ├── generated-test-sources
+    │   └── test-annotations
+    └── test-classes
+        └── dev
+```
+
+React Frontend:
+
+```
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+│   ├── acorn
+|   ...
+│   └── yocto-queue
+├── package.json
+├── package-lock.json
+├── public
+│   └── vite.svg
+├── README.md
+├── src
+│   ├── App.css
+│   ├── App.jsx
+│   ├── assets
+│   ├── index.css
+│   └── main.jsx
+└── vite.config.js
+```
+
+## Tech Stack
+
+Our project leverages a robust set of technologies and development tools:
+
+Here's the updated table with links for the apps and tools:
+
+| Category | Tools |
+|----------|-------|
+| Programming Languages & Frameworks | [React](https://reactjs.org/), [Spring Boot](https://spring.io/projects/spring-boot), [Java](https://www.java.com/), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [Material React UI](https://mui.com/)|
+| Version Control | [Git](https://git-scm.com/), [GitHub](https://github.com/), [GitHub Worktree](https://git-scm.com/docs/git-worktree) |
+| IDEs & Editors | [Visual Studio Code](https://code.visualstudio.com/), [IntelliJ IDEA](https://www.jetbrains.com/idea/), [MarkText](https://marktext.app/), [Sublime Text](https://www.sublimetext.com/), [Sublime Merge](https://www.sublimemerge.com/) |
+| Documentation | [Markdown](https://daringfireball.net/projects/markdown/), [Shields.io](https://shields.io/), [GitHub README](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes), [DiagramGPT](https://www.eraser.io/diagramgpt), [Napkin AI](https://www.napkin.ai/) |
+| Testing | [Postman](https://www.postman.com/), [JUnit](https://junit.org/junit5/), [Jest](https://jestjs.io/) |
+| Databases | [H2 Database](https://www.h2database.com/), [PostgreSQL](https://www.postgresql.org/) |
+| Development Tools | [Maven](https://maven.apache.org/), [npm](https://www.npmjs.com/), [Docker](https://www.docker.com/) |
+| Cloud & Deployment | [Heroku](https://www.heroku.com/), [AWS](https://aws.amazon.com/), [Netlify](https://www.netlify.com/) |
 
 ## Features
 
