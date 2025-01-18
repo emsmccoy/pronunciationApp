@@ -39,19 +39,19 @@ Citations:
 ```
 .
 ├── backend
-│   ├── pronunciationAppBack
-│   └── resources
+│   ├── pronunciationAppBack
+│   └── resources
 ├── frontend
-│   ├── pronunciationAppFront
-│   └── resources
+│   ├── pronunciationAppFront
+│   └── resources
 ├── management
-│   ├── architecture.jpg
-│   ├── lang_en_pron_22080_speaker_8_syllable_all_version_50.mp4
-│   ├── Mono-Multi-repo.md
-│   ├── pronunciationApp.md
-│   └── repository-structure.md
-└── PRA
-    └── PRA_guide.md
+│   ├── Git-gh
+│   ├── installing-add-on-soft-linux
+│   ├── Project-Management
+│   └── Testing and Mocking
+├── PRA
+│   └── PRA_guide.md
+└── README.md
 ```
 
 ## Features
