@@ -20,45 +20,16 @@ The project is organized as a monorepo with three main branches:
 
 Our project leverages a robust set of technologies and development tools:
 
-**Programming Languages & Frameworks**
-- React
-- Spring Boot
-- Java
-- JavaScript
-
-**Version Control**
-- Git
-- GitHub
-- GitHub Worktree
-
-**IDEs & Editors**
-- Visual Studio Code
-- IntelliJ IDEA
-- MarkText, Sublime, Sublime Merge
-
-**Documentation**
-- Markdown
-- Shields.io
-- GitHub README
-
-**Testing**
-- Postman
-- JUnit
-- Jest
-
-**Databases**
-- H2 Database
-- PostgreSQL
-
-**Development Tools**
-- Maven
-- npm
-- Docker
-
-**Cloud & Deployment**
-- Heroku
-- AWS
-- Netlify
+| Category | Tools |
+|----------|-------|
+| Programming Languages & Frameworks | React, Spring Boot, Java, JavaScript |
+| Version Control | Git, GitHub, GitHub Worktree |
+| IDEs & Editors | Visual Studio Code, IntelliJ IDEA, MarkText, Sublime, Sublime Merge |
+| Documentation | Markdown, Shields.io, GitHub README |
+| Testing | Postman, JUnit, Jest |
+| Databases | H2 Database, PostgreSQL |
+| Development Tools | Maven, npm, Docker |
+| Cloud & Deployment | Heroku, AWS, Netlify |
 
 Citations:
 [1] https://github.com/badges/shields
