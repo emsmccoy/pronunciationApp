@@ -1,6 +1,12 @@
 # PronunciationApp
 
-PronunciationApp is a project designed to help users improve their English pronunciation using modern web technologies. This application combines a React frontend with a Spring Boot backend, utilizing H2 and PostgreSQL databases, RESTful APIs, and comprehensive testing with Postman, JUnit, and Jest.
+[![Version](https://img.shields.io/badge/version-0.1.0-blue)](https://github.com/AlbertProfe/pronunciationApp)
+[![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen)](https://github.com/AlbertProfe/pronunciationApp)
+
+
+`PronunciationApp` is a project designed <mark>to help users improve their English pronunciation using modern web technologies</mark>.
+
+> This application combines a React frontend with a Spring Boot backend, utilizing H2 and PostgreSQL databases, RESTful APIs, and comprehensive testing with Postman, JUnit, and Jest.
 
 ## Project Structure
 
@@ -9,6 +15,53 @@ The project is organized as a monorepo with three main branches:
 - **frontend-react**
 - **backend-spring-boot**
 - **master**
+
+## Tech Stack
+
+Our project leverages a robust set of technologies and development tools:
+
+**Programming Languages & Frameworks**
+- React
+- Spring Boot
+- Java
+- JavaScript
+
+**Version Control**
+- Git
+- GitHub
+- GitHub Worktree
+
+**IDEs & Editors**
+- Visual Studio Code
+- IntelliJ IDEA
+- MarkText, Sublime, Sublime Merge
+
+**Documentation**
+- Markdown
+- Shields.io
+- GitHub README
+
+**Testing**
+- Postman
+- JUnit
+- Jest
+
+**Databases**
+- H2 Database
+- PostgreSQL
+
+**Development Tools**
+- Maven
+- npm
+- Docker
+
+**Cloud & Deployment**
+- Heroku
+- AWS
+- Netlify
+
+Citations:
+[1] https://github.com/badges/shields
 
 ### Directory Layout
 
