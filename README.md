@@ -38,11 +38,17 @@ Citations:
 
 ## Project Structure
 
-The project is organized as a monorepo with three main branches:
+The project is organized as a <mark>monorepo with three main branches</mark>:
 
-- **frontend-react**
-- **backend-spring-boot**
-- **master**
+- **frontend-react**:
+   - /frontend/pronunciationAppFront: [pronunciationAppFront](https://github.com/AlbertProfe/pronunciationApp/tree/frontend-react/frontend/pronunciationAppFront)
+   - /frontend/resources: [resources](https://github.com/AlbertProfe/pronunciationApp/tree/frontend-react/frontend/resources)       
+- **backend-spring-boot**:
+   - /backend/pronunciationAppBack: [pronunciationAppBack](https://github.com/AlbertProfe/pronunciationApp/tree/backend-spring-boot/backend/pronunciationAppBack)
+   - /backend/resources: [resources](https://github.com/AlbertProfe/pronunciationApp/tree/backend-spring-boot/backend/resources)   
+- **master**:
+   - /management/: [management](https://github.com/AlbertProfe/pronunciationApp/tree/master/management)
+   - /PRA/: [PRA](https://github.com/AlbertProfe/pronunciationApp/tree/backend-spring-boot/PRA)
 
 ### Directory Layout
 
