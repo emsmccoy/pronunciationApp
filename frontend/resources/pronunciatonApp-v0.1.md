@@ -2,8 +2,8 @@
 
 ## Reference Lab
 
-- [Lab#RE06-1: healthyFood Restaurant]([Lab#RE06-1: healthyFood Restaurant – albertprofe wiki](https://albertprofe.dev/reactjs/rjslab6-1.html)) (with AWS workflow CD/CI deploy)
-- [Lab#RE01-1: API Rest Axios]([Lab#RE01-1: API Rest Axios – albertprofe wiki](https://albertprofe.dev/reactjs/rjslab1.html)) (with Axios)
+- [Lab#RE06-1: healthyFood Restaurant – albertprofe wiki](https://albertprofe.dev/reactjs/rjslab6-1.html): with AWS workflow CD/CI deploy
+- [Lab#RE01-1: API Rest Axios – albertprofe wiki](https://albertprofe.dev/reactjs/rjslab1.html): with Axios
 
 ## Postman Mock Data Server
 
@@ -15,7 +15,7 @@ const BASE_URL = 'https://a387bb02-2aa0-41a6-b8f7-9cc5247b9d5f.mock.pstmn.io';
 
 `Mock servers` are created from Postman collections, which contain saved examples of requests and responses. When a request is sent to the mock server, it matches the incoming request to the closest saved example and returns the corresponding response.
 
-- [Configure and use a Postman mock server]([Configure and use a Postman mock server | Postman Docs](https://learning.postman.com/docs/designing-and-developing-your-api/mocking-data/setting-up-mock/))
+- [Configure and use a Postman mock server | Postman Docs](https://learning.postman.com/docs/designing-and-developing-your-api/mocking-data/setting-up-mock/)
 
 These servers can be public or private, with private servers requiring an API key for access. They're useful for API development, testing, and simulating various scenarios without relying on a live backend.
 
