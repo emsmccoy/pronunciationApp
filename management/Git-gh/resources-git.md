@@ -22,9 +22,11 @@
 
 - [Aprendiendo Git](https://leanpub.com/aprendiendo-git)
 
-- [Getting GitOps: A practical platform with OpenShift, Argo CD, and Tekton | Red Hat Developer](https://developers.redhat.com/e-books/getting-gitops-practical-platform-openshift-argo-cd-and-tekton)
+- [Getting GitOps: A practical platform with OpenShift](https://developers.redhat.com/e-books/getting-gitops-practical-platform-openshift-argo-cd-and-tekton)
 
+## Video
 
+- [What is Git - A Quick Introduction to the Git Version Control System - YouTube](https://youtu.be/OqmSzXDrJBk?feature=shared)
 
 ## Cheatsheet
 
@@ -36,7 +38,6 @@ The script demonstrates the essential steps for setting up a <mark>new Git proje
 
 Citations:
 [1] https://github.com/AlbertProfe/AssistantAI.git
-
 
 ```bash
 git init
@@ -51,54 +52,68 @@ git push -u origin master
 
 After initializing a Git repository and configuring user details, you should not use `git init` or `git config` again in the same project. The next steps in a typical Git workflow would be:
 
-
 1. Make changes to your files and `stage` them:
+   
    ```bash
    git add .
    ```
+   
    This stages all modified files in the current directory[6].
 
 2. `Commit` your changes with a descriptive message:
+   
    ```bash
    git commit -m "Add new hook to handle api rest call"
    ```
+   
    `Commit` messages should explain why the change was made, not just what was done[2].
 
 3. `Push` your branch to the remote repository:
+   
    ```bash
    git push
    ```
+   
    This uploads your local branch to the remote repository for review or backup[2].
 
 Or more complete workflow, creating a new feataure in a new branch and merging it:
 
 1. Create a **new branch** for your feature or issue:
+   
    ```bash
    git checkout -b feature/new-feature
    ```
+   
    This creates and switches to a new branch named "feature/new-feature" based on the current branch[3].
 
 2. Make changes to your files and `stage` them:
+   
    ```bash
    git add .
    ```
+   
    This stages all modified files in the current directory[6].
 
 3. `Commit` your changes with a descriptive message:
+   
    ```bash
    git commit -m "Add new feature to handle user input"
    ```
+   
    `Commit` messages should explain why the change was made, not just what was done[2].
 
 4. `Push` your branch to the remote repository:
+   
    ```bash
    git push origin feature/new-feature
    ```
+   
    This uploads your local branch to the remote repository for review or backup[2].
 
 5. When ready to `merge`, create a `pull request` for code review[2].
 
 6. After approval, `merge` the feature branch into the `master` branch:
+   
    ```bash
    git checkout master
    git merge feature/new-feature
@@ -115,7 +130,6 @@ Citations:
 [6] https://www.reddit.com/r/git/comments/166t4oh/calling_all_git_experts_what_is_the_proper_git/
 [7] https://gist.github.com/blackfalcon/8428401
 
-
 ## Git Repository Management Scripts
 
 - [Git Repository Management Scripts](https://gist.github.com/AlbertProfe/262beaa9b9965df80241049923a77dee#git-repository-management-scripts)
@@ -131,7 +145,6 @@ They provide **hands-on experience with**:
 - Pushing changes to GitHub
 - Deleting repositories
 - Managing GitHub permissions
-
 
 ## Authomate Sync to Local
 
