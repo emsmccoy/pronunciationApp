@@ -2,16 +2,16 @@
 
 ## Project
 
-| Project                                      | DDD   | UML           | Code |
-| -------------------------------------------- | ----- | ------------- | ---- |
-| user-story                                   | words | class diagram |      |
-| mock-up: figma, MUI cards                    | user  |               |      |
-| tech stack                                   |       |               |      |
-| death Note: meta-goals                       |       |               |      |
-| architecture: h2-boot-rest-react             |       |               |      |
-| markdown docs                                |       |               |      |
-| agile: metrics, goals, prioritation, sprints |       |               |      |
-| architecture draft                           |       |               |      |
+| Project                                      | DDD       | UML           | Code |
+| -------------------------------------------- | --------- | ------------- | ---- |
+| user-story                                   | ~~words~~ | class diagram |      |
+| mock-up: figma, MUI cards                    | user      |               |      |
+| tech stack                                   |           |               |      |
+| death Note: meta-goals                       |           |               |      |
+| architecture: h2-boot-rest-react             |           |               |      |
+| markdown docs                                |           |               |      |
+| agile: metrics, goals, prioritation, sprints |           |               |      |
+| architecture draft                           |           |               |      |
 
 ## Links
 
