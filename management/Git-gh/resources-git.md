@@ -132,3 +132,7 @@ They provide **hands-on experience with**:
 - Deleting repositories
 - Managing GitHub permissions
 
+
+## Authomate Sync to Local
+
+- [Authomate Sync to Local](https://gist.github.com/AlbertProfe/4f9d89ffe14beb62d166730929070e9a)
