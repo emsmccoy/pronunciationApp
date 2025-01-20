@@ -1,34 +1,28 @@
-import { getImageUrl } from './utils.js';
-
-
 export default function Card(){
 
 
 return (
   <>
-    <h1>Notable Scientists</h1>
+    <h1>Learn English once and for all</h1>
     <section className="profile">
-      <h2>Maria Skłodowska-Curie</h2>
+      <h2>Practice Real-World Conversations</h2>
       <img
         className="avatar"
-        src={getImageUrl("szV5sdG")}
-        alt="Maria Skłodowska-Curie"
-        width={70}
-        height={70}
+        src="../src/assets/hero-image.png"
+        alt="Practice Real-World Conversations"
       />
       <ul>
         <li>
-          <b>Profession: </b>
-          physicist and chemist
+          <b>Speak: </b>
+          practice your pronunciation
         </li>
         <li>
-          <b>Awards: 4 </b>
-          (Nobel Prize in Physics, Nobel Prize in Chemistry, Davy Medal,
-          Matteucci Medal)
+          <b>Drill: </b>
+          repeat until perfection!
         </li>
         <li>
-          <b>Discovered: </b>
-          polonium (chemical element)
+          <b>Listen: </b>
+          get used to real english sounds
         </li>
       </ul>
     </section>
