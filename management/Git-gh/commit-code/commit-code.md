@@ -1,4 +1,4 @@
-# # Commit Code
+# Commit Code
 
 These commit codes follow a common convention where a short prefix indicates the type of change, followed by a brief description of the change. This format helps in quickly understanding the nature of each commit in version control systems like Git.
 
