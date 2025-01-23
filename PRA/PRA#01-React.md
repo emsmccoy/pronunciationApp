@@ -40,17 +40,17 @@ To use this mock server endpoint, simply send HTTP requests to the URL, and Post
 
 Summary of tasks:
 
-- [ ]  Set up Postman mock server
+- [ ] Set up Postman mock server
 
-- [ ]  Implement axios function for data fetching
+- [ ] Implement axios function for data fetching
 
-- [ ]  Create user JSON structure
+- [ ] Create user JSON structure
 
-- [ ]  Develop user component with avatar
+- [ ] Develop user component with avatar
 
-- [ ]  Add difficulty levels to words and implement filtering
+- [ ] Add difficulty levels to words and implement filtering
 
-- [ ]  Implement synonyms rendering for words
+- [ ] Implement synonyms rendering for words
 
 ### Tasks description
 
@@ -197,7 +197,7 @@ Citations:
 - Commit your changes with clear, descriptive messages.
 - Push your branch to your forked repository.
 - Create a pull request to the AlbertProfe repository with a summary of your changes, titled:
-  - `PRA#01_React-YourName-Compo9nentsFrontendDevelopment`
+  - `PRA#01_React-YourName-ComponentsFrontendDevelopment`
 
 Good luck with your implementation! Remember to focus on creating reusable components and maintaining a clean, efficient codebase.
 
