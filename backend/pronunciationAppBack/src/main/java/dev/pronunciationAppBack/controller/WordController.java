@@ -4,6 +4,7 @@ import dev.pronunciationAppBack.model.Word;
 import dev.pronunciationAppBack.repository.WordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class WordController {
         return wordRepository.getWordById(id);
     }
 
-    @PostMapping
+    @PostMapping("/createWord")
     public Word createWord(@RequestBody Word word) {
         return wordRepository.save(word);
     }
@@ -59,6 +60,21 @@ public class WordController {
         wordRepository.deleteById(idToDelete);
         return "Word deleted";
     }
+
+    @DeleteMapping
+    public String deleteAllWords() {
+        wordRepository.deleteAll();
+        return "All words deleted";
+    }
+
+/*
+    @PostMapping("/createWords")
+    public ResponseEntity<List<Word>> createWords(@RequestBody List<Word> words) {
+        List<Word> savedWords = wordRepository.saveAll(words);
+        return ResponseEntity.ok(savedWords);
+    }
+*/
+
 
 
 
