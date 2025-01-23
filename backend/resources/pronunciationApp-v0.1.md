@@ -2,19 +2,19 @@
 
 ## Project
 
-- pronunciationApp Backend GitHub [code]([pronunciationApp/backend/pronunciationAppBack at backend-spring-boot · AlbertProfe/pronunciationApp · GitHub](https://github.com/AlbertProfe/pronunciationApp/tree/backend-spring-boot/backend/pronunciationAppBack))
+- pronunciationApp Backend **GitHub** [code](https://github.com/AlbertProfe/pronunciationApp/tree/backend-spring-boot/backend/pronunciationAppBack)
 
-- pronunciatoinApp Backend [resources]([pronunciationApp/backend/resources at backend-spring-boot · AlbertProfe/pronunciationApp · GitHub](https://github.com/AlbertProfe/pronunciationApp/tree/backend-spring-boot/backend/resources)) 
+- pronunciatoinApp Backend [resources](https://github.com/AlbertProfe/pronunciationApp/tree/backend-spring-boot/backend/resources) **documentation**
 
 ### Project Structure
 
-A Spring Boot backend application for the Pronunciation App, using:
+A Spring Boot backend application for the `Pronunciation App`, using:
 
 - H2 Database (local file-based or memory for certain purposes)
-- Spring Data JPA
+- `Spring Data JPA`
 - <mark>REST Controller</mark>
 - Service Layer
-- Entity Mapping
+- Entity Mapping: `@Entity`
 
 ### Dependencies
 
@@ -307,7 +307,9 @@ Create a new collection for `PronunciationApp` with these CRUD endpoints:
 3. **POST Create Word**
    
    - Method: POST
+   
    - URL: `http://localhost:8080/api/words`
+   
    - Body (raw JSON):
      
      ```json
@@ -320,13 +322,17 @@ Create a new collection for `PronunciationApp` with these CRUD endpoints:
          "level": 2
      }
      ```
+   
    - Expected: Returns created word with auto-generated ID
 
 4. **PUT Update Word**
    
    - Method: PUT
+   
    - URL: `http://localhost:8080/api/words/{id}`
+   
    - Params: Replace `{id}` with existing word ID
+   
    - Body (raw JSON):
      
      ```json
@@ -339,6 +345,7 @@ Create a new collection for `PronunciationApp` with these CRUD endpoints:
          "level": 3
      }
      ```
+   
    - Expected: Returns updated word
 
 5. **DELETE Word**
@@ -367,19 +374,17 @@ Create a new collection for `PronunciationApp` with these CRUD endpoints:
 - Check level and active status constraints
 - Test boundary conditions (max/min levels)
 
-
-
 ## Running the Application
 
 1. Ensure you have Java 17+ and Maven installed
 2. Configure the database path in `application.properties`
 3. Run the Spring Boot application
-4. Access H2 console at `http://localhost:8080/h2-console`
+4. <mark>Access H2</mark> console at `http://localhost:8080/h2-console`
 5. Access API endpoints at `http://localhost:8080/api/words`
 
 ## Notes
 
-- The application uses a local H2 database file
+- The application uses a **local**<mark> H2 database file</mark>
 - <mark>UUID is used for generating unique word IDs</mark>
 - Basic CRUD operations are implemented
-- Additional query methods are available in the repository and service layers
+- Additional **query methods are available in the repository** and service layers
