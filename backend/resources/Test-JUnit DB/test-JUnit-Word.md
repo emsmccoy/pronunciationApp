@@ -136,11 +136,7 @@ These settings will:
 - Set up the database to create tables based on your entities and drop them after the tests
 - Show SQL statements in the console, which can be helpful for debugging
 
-
-
 ## Local DB
-
-
 
 First you must create the DB:
 
