@@ -3,6 +3,7 @@ package dev.pronunciationAppBack.controller;
 import dev.pronunciationAppBack.model.Word;
 import dev.pronunciationAppBack.repository.WordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,15 +49,14 @@ public class WordController {
         return wordRepository.save(word);
     }
 
-
     @PutMapping("/{id}")
     public Word updateWord(@PathVariable String id, @RequestBody Word word) {
         return wordRepository.save(word);
     }
 
-    @DeleteMapping("/words/{id}")
-    public String deleteWord(String id) {
-        wordRepository.deleteById(id);
+    @DeleteMapping("/{id}")
+    public String deleteWord(@PathVariable("id") String idToDelete) {
+        wordRepository.deleteById(idToDelete);
         return "Word deleted";
     }
 

@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface WordRepository extends JpaRepository<Word, String> {
     Word getWordById(String id);
+    Word getWordByPronunciation(String pronunciation);
 }
