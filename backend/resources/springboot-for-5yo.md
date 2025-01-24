@@ -16,6 +16,8 @@ Here's how it works:
 
 - The cook is like `SQL queries.` They do the actual cooking, following the chef's instructions.
 
+- Each plate has a super-sercret code just for superheroes, this secret code is the `id` at `database`.
+
 - All the ingredients are kept in the pantry and fridge, which is like the `database`.
 
 - And finally, the plates and dishes are like the `Model`. They hold all the delicious food that comes to your table.
@@ -24,7 +26,7 @@ Here's how it works:
 
 - What if you could watch chefs cooking? The `WebSocket` is like a magical window where you see everything happening in the kitchen, right when it's happening!
 
-- The `Security` is like a friendly firend who makes sure only nice people can enter and keeps all the secret recipes safe.
+- The `Security` is like a kind and strong firend who makes sure only nice people can enter and keeps all the secret recipes safe.
 
 - The `Thymeleaf Templates` and `Vaadin` create super cool, colorful menus that make you smile and want to try everything.
 
