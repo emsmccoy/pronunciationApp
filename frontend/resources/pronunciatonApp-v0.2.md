@@ -101,4 +101,19 @@ function App() {
 
 This setup creates routes for our main pages. The Home component will need to handle its own sub-views (Home, HomeForm, UserLogged) using state or nested routes.
 
+#### Named and Default exportations
+
+1. **Named exports**: When a module uses <mark>named exports</mark>, you need to use curly braces {} to import specific items. This is the case for `BrowserRouter`, `Route`, and `Switch` from 'react-router-dom'.
+   
+   ```jsx
+   import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+   ```
+
+2. **Default exports**: When a module has a <mark>default</mark> export, you import it without curly braces. This is likely the case for your component files like `About`.
+   
+   ```jsx
+    import About from './components/About';
+   ```
+
+Citations:
 [1] https://albertprofe.dev/reactjs/reactjs-app-router.html
