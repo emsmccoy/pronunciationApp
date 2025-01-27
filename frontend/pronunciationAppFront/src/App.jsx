@@ -1,10 +1,10 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {Layout} from './Layout'
-import {Home} from './Home.jsx'
-import {NoPage} from './NoPage'
-import {Practice} from './Practice'
-import {About} from './About'
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Layout from './Layout'
+import Home from './Home.jsx'
+import NoPage from './NoPage'
+import Practice from './Practice'
+import About from './About'
 
 
 function App() {

@@ -2,9 +2,9 @@
 
 ## Reference Lab
 
-- [# React JS App: router]([React JS App: router – albertprofe wiki](https://albertprofe.dev/reactjs/reactjs-app-router.html)): with the installation of `npm i -D react-router-dom`
-- [react-router-dom ](https://www.npmjs.com/package/react-router-dom): npm official repo
-- [React Router v6.0](https://reactrouter.com/): official recommendation
+- [React JS App: router – albertprofe wiki](https://albertprofe.dev/reactjs/reactjs-app-router.html) : with the installation of `npm i -D react-router-dom`
+- [react-router-dom ](https://www.npmjs.com/package/react-router-dom) : npm official repo
+- [React Router v6.0](https://reactrouter.com/) : official recommendation
 
 ## React Router Setup
 
