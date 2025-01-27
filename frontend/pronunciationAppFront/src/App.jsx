@@ -1,19 +1,27 @@
 import './App.css'
-import Cards from "./Cards.jsx"
-import Header from "./Hero.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {Layout} from './Layout'
+import {Home} from './Home.jsx'
+import {NoPage} from './NoPage'
+import {Practice} from './Practice'
+import {About} from './About'
+
 
 function App() {
 
 
   return (
-    <>
-      <h2>Welcome to PronunciationApp</h2>
-
-      <Header />
-
-      <Cards />
-    </>
+<BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="practice" element={<Practice />} />
+          <Route path="about" element={<About />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App
+export default App;

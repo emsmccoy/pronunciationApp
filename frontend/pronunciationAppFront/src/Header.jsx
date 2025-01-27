@@ -1,4 +1,6 @@
-export default function HeroSection(){
+
+
+export default function Header(){
 
 
 return (
