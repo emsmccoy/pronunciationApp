@@ -1,6 +1,6 @@
 import Cards from './Cards'
 
-const Practice = () => {
+export default function Practice(){
 
 
   return (
@@ -12,5 +12,3 @@ const Practice = () => {
   </>
 
 )};
-
-export default Practice;

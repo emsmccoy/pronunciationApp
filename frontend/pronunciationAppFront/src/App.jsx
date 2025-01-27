@@ -1,17 +1,17 @@
-import './App.css'
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Layout from './Layout'
-import Home from './Home.jsx'
-import NoPage from './NoPage'
-import Practice from './Practice'
-import About from './About'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import About from './About';
+import './App.css';
+import Home from './Home.jsx';
+import Layout from './Layout';
+import NoPage from './NoPage';
+import Practice from './Practice';
 
 
-function App() {
+export default function App() {
 
 
   return (
-<BrowserRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -21,7 +21,6 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-  );
-}
+      );
+};
 
-export default App;

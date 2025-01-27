@@ -12,19 +12,34 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: linear-gradient(to bottom, #4b6cb7, #182848);
   color: #F0F4F8;  /* Soft light gray text */
   line-height: 1.6;
   letter-spacing: 0.5px;
+  display: flex;
+  flex-direction: column;
 }
 
-
+#root {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  flex: 1;
+}
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
-
-
+ul {
+  list-style-type: none;
+  padding: 0;
+}
