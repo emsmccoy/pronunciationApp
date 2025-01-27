@@ -1,7 +1,7 @@
 // api.js
 import axios from "axios";
 
-const BASE_URL = "https://a387bb02-2aa0-41a6-b8f7-9cc5247b9d5f.mock.pstmn.io";
+const BASE_URL = "https://1e84671c-879b-423f-b798-dfa33a0482f6.mock.pstmn.io";
 
 export const fetchWords = async () => {
   try {
