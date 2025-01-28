@@ -2,7 +2,6 @@
 
 ## Overview
 
-
 This document serves as both a guide and a log for the PRA#01 React frontend development task. 
 
 ---
@@ -11,13 +10,13 @@ This document serves as both a guide and a log for the PRA#01 React frontend dev
 
 ### Common Part
 
-| Task                                          | Estimated Time | Actual Time                    | Impediments (if any)                                                                       | Error logs                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| --------------------------------------------- | -------------- | ------------------------------ | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Set up Postman mock server                    | 1 hour         | 2:30h                          | mock server JSON and the data data-api fetched had different structures|
-| Implement axios function for data fetching    | 1 hour         | 1:15 (and back to mock server) | Needed to install font roboto, emotion and material ui.                                    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Create user JSON structure                    | 1 hour         |                                |                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Develop user component with avatar            | 2 hours        |                                |                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Add difficulty levels and implement filtering | 2 hours        |                                |                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Task                                          | Estimated Time | Actual Time                    | Impediments (if any)                                                    | Error logs |
+| --------------------------------------------- | -------------- | ------------------------------ | ----------------------------------------------------------------------- | ---------- |
+| Set up Postman mock server                    | 1 hour         | 2:30h                          | mock server JSON and the data data-api fetched had different structures |            |
+| Implement axios function for data fetching    | 1 hour         | 1:15 (and back to mock server) | Needed to install font roboto, emotion and material ui.                 |            |
+| Create user JSON structure                    | 1 hour         | 10 min                         |                                                                         |            |
+| Develop user component with avatar            | 2 hours        | 1 hour so far                  | potsman example didn't have the URL                                     |            |
+| Add difficulty levels and implement filtering | 2 hours        |                                |                                                                         |            |
 
 | Task                                          | Estimated Time | Actual Time                    | Impediments (if any)                                                        | Error logs                                                     |
 | --------------------------------------------- | -------------- | ------------------------------ | --------------------------------------------------------------------------- | -------------------------------------------------------------- |
@@ -79,9 +78,7 @@ return response.data.words; // This was causing the issue
   } };
 ```
 
-
 Updated code in `api.js`:
-
 
 ```javascript
 export const fetchWords = async () => {   try {    const response = await axios.get(`${BASE_URL}/words`);
@@ -92,8 +89,6 @@ throw error;  } };
 
 **Explanation:**  
 The API was returning the array of words directly in the `response.data`, not nested under a `words` property. By changing `return response.data.words;` to `return response.data;`, we correctly access the array of words, allowing the `.map()` function to work as expected in the `WordList` component.
-
-
 
 ## Error Documentation and Solution (aka Well Collection)
 
@@ -146,35 +141,50 @@ The API was returning the array of words directly in the `response.data`, not n
 ### **Tasks Completed**:
 
 - [x] Postman mock server is set up with correct endpoint.
+
 - [ ] Axios function is implemented in a decoupled manner.
+
 - [ ] User JSON structure includes varied data types.
+
 - [ ] User component renders correctly with avatar.
+
 - [ ] Difficulty levels and filtering are functional.
+
 - [ ] Synonyms rendering is implemented and error-free.
 
 - [x] Postman mock server is set up with correct endpoint.
+  
   - [ ] change data structure in mock server
+
 - [x] Axios function is implemented in a decoupled manner.
+  
   - [ ] handle errors
+
 - [ ] User JSON structure includes varied data types.
+
 - [ ] User component renders correctly with avatar.
+
 - [ ] Difficulty levels and filtering are functional.
+
 - [ ] Synonyms rendering is implemented and error-free.
 
 ### **Testing**:
 
 - [ ] All components are tested locally.
+
 - [ ] Error handling in data fetching.
+
 - [ ] UI is responsive and behaves as expected.
 
 - [ ] All components are tested locally.
+
 - [ ] Error handling in data fetching.
+
 - [ ] UI is responsive and behaves as expected.
 
 ---
 
 ## Future Improvements
-
 
 - Add unit and integration tests for key components.
 - Enhance UI/UX with additional CSS animations or interactive features.
