@@ -5,6 +5,8 @@
 - [React JS App: router – albertprofe wiki](https://albertprofe.dev/reactjs/reactjs-app-router.html) : with the installation of `npm i -D react-router-dom`
 - [react-router-dom ](https://www.npmjs.com/package/react-router-dom) : npm official repo
 - [React Router v6.0](https://reactrouter.com/) : official recommendation
+- [Getting Started | Axios Docs](https://axios-http.com/docs/intro) : Promise based HTTP client for the browser and node.js
+- [App Bar](https://mui.com/material-ui/react-app-bar/) : The App Bar displays information and actions relating to the current screen.
 
 ## React Router Setup
 
@@ -34,7 +36,7 @@ Three <mark>variants</mark> for displaying pronunciation cards:
 
 - Information about the app and its features
 
-## Home Page Components
+### Home Page Components
 
 The Home page will consist of three main views:
 
@@ -56,7 +58,7 @@ The Home page will consist of three main views:
 - Quick stats on practice sessions
 - Link to start a new practice session
 
-## Practice Page Variants
+### Practice Page Variants
 
 **Grid Layout**
 
@@ -114,6 +116,140 @@ This setup creates routes for our main pages. The Home component will need to ha
    ```jsx
     import About from './components/About';
    ```
+
+Citations:
+
+[1] [What is the Difference Between Default and Named Exports in JavaScript?](https://www.freecodecamp.org/news/difference-between-default-and-named-exports-in-javascript/)
+
+## Axios
+
+- [Axios]([Getting Started | Axios Docs](https://axios-http.com/docs/intro)) : Promise based HTTP client for the browser and node.js
+
+### What is Axios?
+
+> Axios is a [promise-based](https://javascript.info/promise-basics) HTTP Client for [`node.js`](https://nodejs.org) and the browser. It is [isomorphic](https://www.lullabot.com/articles/what-is-an-isomorphic-application) (= it can run in the browser and nodejs with the same codebase). 
+> 
+> On the server-side it uses the native node.js `http` module, while on the client (browser) it uses XMLHttpRequests.
+
+
+
+### CRUD implementation
+
+Now, we could complete the implementation of all <mark>CRUD (Create, Read, Update, Delete) operations</mark> for our `api.js` file using Axios with our `BASE_URL`.
+
+```javascript
+// api.js
+import axios from "axios";
+
+const BASE_URL = "https://1e84671c-879b-423f-b798-dfa33a0482f6.mock.pstmn.io";
+
+// READ: Fetch all words
+export const fetchWords = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/words`);
+    return response.data.words;
+  } catch (error) {
+    console.error("Error fetching words:", error);
+    throw error;
+  }
+};
+
+// CREATE: Add a new word
+export const createWord = async (newWord) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/words`, { word: newWord });
+    return response.data;
+  } catch (error) {
+    console.error("Error creating a new word:", error);
+    throw error;
+  }
+};
+
+// UPDATE: Update an existing word by ID
+export const updateWord = async (id, updatedWord) => {
+  try {
+    const response = await axios.put(`${BASE_URL}/words/${id}`, { word: updatedWord });
+    return response.data;
+  } catch (error) {
+    console.error(`Error updating the word with ID ${id}:`, error);
+    throw error;
+  }
+};
+
+// DELETE: Delete a word by ID
+export const deleteWord = async (id) => {
+  try {
+    const response = await axios.delete(`${BASE_URL}/words/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error deleting the word with ID ${id}:`, error);
+    throw error;
+  }
+};
+```
+
+### Explanation of Each Function:
+
+1. **`fetchWords`**:
+   
+   - Sends a `GET` request to fetch all words from the server.
+   - Returns the list of words.
+
+2. **`createWord`**:
+   
+   - Sends a `POST` request to add a new word.
+   - Takes `newWord` as an argument, which is the word to be added.
+   - Returns the server's response.
+
+3. **`updateWord`**:
+   
+   - Sends a `PUT` request to update an existing word by its ID.
+   - Takes `id` (the unique identifier of the word) and `updatedWord` (the updated value of the word) as arguments.
+   - Returns the updated data from the server.
+
+4. **`deleteWord`**:
+   
+   - Sends a `DELETE` request to remove a word by its ID.
+   - Takes `id` as an argument.
+   - Returns the server's response.
+
+**Usage Example:**
+
+Here’s how you might use these functions in your application:
+
+```javascript
+import { fetchWords, createWord, updateWord, deleteWord } from "./api";
+
+const main = async () => {
+  try {
+    // Fetch all words
+    const words = await fetchWords();
+    console.log("Fetched words:", words);
+
+    // Create a new word
+    const newWord = "example";
+    const createdWord = await createWord(newWord);
+    console.log("Created word:", createdWord);
+
+    // Update an existing word
+    const updatedWord = "updated-example";
+    const updatedResponse = await updateWord(createdWord.id, updatedWord);
+    console.log("Updated word:", updatedResponse);
+
+    // Delete a word
+    const deletedResponse = await deleteWord(createdWord.id);
+    console.log("Deleted word:", deletedResponse);
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+};
+
+main();
+```
+
+
+
+
 
 Citations:
 [1] https://albertprofe.dev/reactjs/reactjs-app-router.html
