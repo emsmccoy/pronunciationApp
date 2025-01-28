@@ -123,15 +123,13 @@ Citations:
 
 ## Axios
 
-- [Axios]([Getting Started | Axios Docs](https://axios-http.com/docs/intro)) : Promise based HTTP client for the browser and node.js
+- [Getting Started | Axios Docs](https://axios-http.com/docs/intro) : Promise based HTTP client for the browser and node.js
 
 ### What is Axios?
 
 > Axios is a [promise-based](https://javascript.info/promise-basics) HTTP Client for [`node.js`](https://nodejs.org) and the browser. It is [isomorphic](https://www.lullabot.com/articles/what-is-an-isomorphic-application) (= it can run in the browser and nodejs with the same codebase). 
 > 
 > On the server-side it uses the native node.js `http` module, while on the client (browser) it uses XMLHttpRequests.
-
-
 
 ### CRUD implementation
 
@@ -194,6 +192,7 @@ export const deleteWord = async (id) => {
    
    - Sends a `GET` request to fetch all words from the server.
    - Returns the list of words.
+   - `${BASE_URL}/words` is a <mark>string interpolation in JavaScript</mark>, specifically using a template literal: the `${}` syntax within a template literal is used for string interpolation [1] [2].
 
 2. **`createWord`**:
    
@@ -212,6 +211,12 @@ export const deleteWord = async (id) => {
    - Sends a `DELETE` request to remove a word by its ID.
    - Takes `id` as an argument.
    - Returns the server's response.
+
+Citations:
+
+[1]  [JavaScript Template Strings](https://www.w3schools.com/js/js_string_templates.asp)
+
+[2] [Template literals (Template strings) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
 
 **Usage Example:**
 
@@ -246,10 +251,6 @@ const main = async () => {
 
 main();
 ```
-
-
-
-
 
 Citations:
 [1] https://albertprofe.dev/reactjs/reactjs-app-router.html
