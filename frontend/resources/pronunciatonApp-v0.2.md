@@ -105,6 +105,8 @@ This setup creates routes for our main pages. The Home component will need to ha
 
 #### Named and Default exportations
 
+> Curly braces `{}` in React imports are used to distinguish between default exports and named exports
+
 1. **Named exports**: When a module uses <mark>named exports</mark>, you need to use curly braces {} to import specific items. This is the case for `BrowserRouter`, `Route`, and `Switch` from 'react-router-dom'.
    
    ```jsx
@@ -116,6 +118,19 @@ This setup creates routes for our main pages. The Home component will need to ha
    ```jsx
     import About from './components/About';
    ```
+
+The reason for this distinction is how modules export their contents[1](https://blog.stackademic.com/why-do-some-imports-use-d194c00cb391?gi=4707c297c748):
+
+- Default export: `export default myVariable;`
+- Named export: `export const myVariable = 'value';`
+
+<mark>It's important to note that a single file can have both default and named exports</mark>. This is why you might see imports like: 
+
+```jsx
+import React, { useState } from 'react'
+```
+
+
 
 Citations:
 
