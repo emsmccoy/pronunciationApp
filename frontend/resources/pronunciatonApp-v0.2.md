@@ -252,5 +252,103 @@ const main = async () => {
 main();
 ```
 
+## File Navigation
+
+> To navigate files for import and export in React, we can use **relative paths or implement absolute imports**. 
+
+Here's how to handle file navigation in your project structure:
+
+## Relative Paths
+
+When using relative paths, you navigate based on the current file's location:
+
+- `./` refers to the current directory
+- `../` moves up one directory
+- `../../` moves up two directories, and so on
+
+For our structure, here's how you might import files:
+
+```javascript
+// In App.jsx
+import Header from './Header';
+import Home from './Home';
+import { getData } from './data-api';
+
+// In Home.jsx
+import heroImage from './assets/hero-image.png';
+```
+
+## Absolute Imports
+
+To simplify imports and avoid long relative paths, you can set up absolute imports:
+
+1. Create a `jsconfig.json` file in your project root:
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "src"
+  }
+}
+```
+
+2. Now you can import using absolute paths:
+
+```javascript
+// From anywhere in your project
+import Header from 'components/Header';
+import { getData } from 'utils/data-api';
+import heroImage from 'assets/hero-image.png';
+```
+
+## Reorganizing Project Structure
+
+To improve organization, move files into appropriate folders:
+
+```
+src/
+├── components/
+│   ├── Cards.jsx
+│   └── Header.jsx
+├── pages/
+│   ├── About.jsx
+│   ├── Home.jsx
+│   ├── NoPage.jsx
+│   └── Practice.jsx
+├── layout/
+│   └── Layout.jsx
+├── assets/
+│   └── hero-image.png
+├── utils/
+│   └── data-api.js
+├── styles/
+│   ├── App.css
+│   └── index.css
+├── App.jsx
+└── main.jsx
+```
+
+After reorganizing, update imports:
+
+```javascript
+// In App.jsx
+import Header from './components/Header';
+import Home from './pages/Home';
+import { getData } from './utils/data-api';
+
+// In pages/Home.jsx
+import heroImage from '../assets/hero-image.png';
+```
+
+Using absolute imports with this structure would be even cleaner:
+
+```javascript
+// In any file
+import Header from 'components/Header';
+import Home from 'pages/Home';
+import { getData } from 'utils/data-api';
+import heroImage from 'assets/hero-image.png';
+```
+
 Citations:
 [1] https://albertprofe.dev/reactjs/reactjs-app-router.html
