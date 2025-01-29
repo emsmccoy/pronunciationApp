@@ -10,9 +10,9 @@ function App() {
     <>
       <h2>Welcome to PronunciationApp</h2>
 
-      <Header />
-
       <User />
+
+      <Header />
 
       <Cards></Cards>
 
