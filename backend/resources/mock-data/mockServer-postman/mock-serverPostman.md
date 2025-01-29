@@ -2,6 +2,16 @@
 
 > Mock servers simulate real API behavior and are useful for testing and development without relying on live APIs.
 
+## Reference
+
+- https://86c6ea23-f1a9-4a53-85a9-9c9869d64809.mock.pstmn.io/api/words/
+
+- [Configure and use a Postman mock server | Postman Docs](https://learning.postman.com/docs/designing-and-developing-your-api/mocking-data/setting-up-mock/)
+
+## Step-by-step
+
+
+
 To create a mock server in Postman from a collection, follow these steps:
 
 1. **Select the Collection**:
@@ -34,8 +44,6 @@ To create a mock server in Postman from a collection, follow these steps:
    
    - To edit, go to **Mock Servers** in the sidebar, select the desired server, and click **Edit Configuration**.
    - To delete, click **View more actions** next to the server name and select **Delete**.
-
-
 
 Citations:
 [1] https://learning.postman.com/docs/designing-and-developing-your-api/mocking-data/setting-up-mock/
