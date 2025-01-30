@@ -48,3 +48,7 @@ Now the prompt has four distinct colors for each part:
 2. Green (\033[01;32m) for user@host: `\u@\h`
 3. Cyan (\033[01;36m) for path: `\w`
 4. Yellow (\033[33m) for git branch: `$(parse_git_branch)`
+
+
+
+- [Display git branch in bash prompt · GitHub](https://gist.github.com/justintv/168835?permalink_comment_id=3667858)
