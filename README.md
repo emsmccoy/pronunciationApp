@@ -88,6 +88,7 @@ This document serves as a guide and log for the backend development of the PRA#0
 
 ## Future Improvements
 
+- Implement Global Exception Handling.
 - Add more unit and integration tests for key functionalities.
 - Implement custom queries for enhanced user search.
 - Optimize service layer for better performance and maintainability.
