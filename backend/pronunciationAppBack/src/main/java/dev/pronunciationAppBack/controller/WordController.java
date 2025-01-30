@@ -1,7 +1,7 @@
 package dev.pronunciationAppBack.controller;
 
 import dev.pronunciationAppBack.model.Word;
-import dev.pronunciationAppBack.repository.WordRepository;
+import dev.pronunciationAppBack.service.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,17 +17,17 @@ import java.util.Optional;
 public class WordController {
 
     @Autowired
-    private WordRepository wordRepository;
+    private WordService wordService;
 
-    @GetMapping("/hello")
+ /*   @GetMapping("/hello")
     public ResponseEntity<String> hello() {
         HttpHeaders headers = getCommonHeaders("Hello endpoint");
         return new ResponseEntity<>("hello Emiliano, are you sleeping?", headers, HttpStatus.OK);
-    }
+    }*/
 
     @GetMapping
     public ResponseEntity<List<Word>> getAllWords() {
-        List<Word> words = wordRepository.findAll();
+        List<Word> words = wordService.getAllWords();
         HttpHeaders headers = getCommonHeaders("Get all words");
 
         return !words.isEmpty()
@@ -37,7 +37,7 @@ public class WordController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Word> getWordById(@PathVariable String id) {
-        Optional<Word> word = Optional.ofNullable(wordRepository.getWordById(id));
+        Optional<Word> word = wordService.getWordById(id);
         HttpHeaders headers = getCommonHeaders("Get word by ID");
 
         return word.map(value -> new ResponseEntity<>(value, headers, HttpStatus.OK))
@@ -46,7 +46,7 @@ public class WordController {
 
     @PostMapping("/createWord")
     public ResponseEntity<Word> createWord(@RequestBody Word word) {
-        Word createdWord = wordRepository.save(word);
+        Word createdWord = wordService.createWord(word);
         HttpHeaders headers = getCommonHeaders("Create a new word");
 
         return new ResponseEntity<>(createdWord, headers, HttpStatus.CREATED);
@@ -54,7 +54,7 @@ public class WordController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Word> updateWord(@PathVariable String id, @RequestBody Word word) {
-        Word updatedWord = wordRepository.save(word);
+        Word updatedWord = wordService.updateWord(word);
         HttpHeaders headers = getCommonHeaders("Update a word");
 
         return new ResponseEntity<>(updatedWord, headers, HttpStatus.OK);
@@ -64,8 +64,8 @@ public class WordController {
     public ResponseEntity<String> deleteWord(@PathVariable("id") String idToDelete) {
         HttpHeaders headers = getCommonHeaders("Delete a word");
 
-        if (wordRepository.existsById(idToDelete)) {
-            wordRepository.deleteById(idToDelete);
+        if (wordService.existsById(idToDelete)) {
+            wordService.deleteWord(idToDelete);
             return new ResponseEntity<>("Word deleted", headers, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Word not found", headers, HttpStatus.NOT_FOUND);
@@ -74,7 +74,7 @@ public class WordController {
 
     @DeleteMapping
     public ResponseEntity<String> deleteAllWords() {
-        wordRepository.deleteAll();
+        wordService.deleteAllWords();
         HttpHeaders headers = getCommonHeaders("Delete all words");
         return new ResponseEntity<>("All words deleted", headers, HttpStatus.OK);
     }
@@ -86,8 +86,9 @@ public class WordController {
         headers.add("date", new Date().toString());
         headers.add("server", "Spring Boot");
         headers.add("version", "1.0.0");
-        headers.add("word-count", String.valueOf(wordRepository.count()));
+        headers.add("word-count", String.valueOf(wordService.getWordCount()));
         headers.add("object", "words");
         return headers;
     }
 }
+
