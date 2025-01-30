@@ -10,7 +10,7 @@ Here's how it works:
 
 - The waiter is like the `Controller`. They take your order and make sure you get what you wan.
 
-- The kitchen is like the `Service`. It's where all the food is prepared.
+- Once the waiter has the order,  our restaurant is so big that all the waiters are queuing to deliver the orders to the **kitchen**: it's where all the food is prepared. Our restaurant has a <mark>orders-board</mark> where the waiter boss pins the order, it is like the `Service`.  
 
 - In the kitchen, there's a chef who's like `JPA`. They know all the recipes and how to make the dishes just right.
 

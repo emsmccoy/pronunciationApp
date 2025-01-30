@@ -1,6 +1,6 @@
 # PronunciationApp Backend v0.2
 
-## Refactoring and adding @Service
+## Refactoring @RestController and adding @Service
 
 > Implementing a `WordService` and refactoring the `WordController` is a good practice in Spring Boot applications for several reasons. 
 
@@ -74,11 +74,13 @@ public class WordController {
     @Autowired
     private WordService wordService;
 
+    /*
     @GetMapping("/hello")
     public ResponseEntity<String> hello() {
         HttpHeaders headers = getCommonHeaders("Hello endpoint");
         return new ResponseEntity<>("hello Emiliano, are you sleeping?", headers, HttpStatus.OK);
     }
+    */
 
     @GetMapping
     public ResponseEntity<List<Word>> getAllWords() {
@@ -160,7 +162,115 @@ public class WordController {
 
 5. **Abstraction**: The controller doesn't need to know about the repository implementation, providing better abstraction.
 
-### Real Use Case #1
+### Check health
+
+Well create a new controller class that incorporates the <mark>health check endpoint along with other best practices</mark>. 
+
+Here's the new `HealthController` class:
+
+```java
+package dev.pronunciationAppBack.controller;
+
+import dev.pronunciationAppBack.model.Word;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/health")
+public class HealthController {
+
+    @Autowired
+    private WordService wordService;
+
+    @GetMapping
+    public ResponseEntity<Map<String, Object>> healthCheck() {
+        Map<String, Object> healthStatus = new HashMap<>();
+        healthStatus.put("status", "UP");
+        healthStatus.put("timestamp", new Date());
+        healthStatus.put("wordCount", wordService.getWordCount());
+
+        boolean databaseConnection = checkDatabaseConnection();
+        healthStatus.put("database", databaseConnection ? "Connected" : "Disconnected");
+
+        // Add more health checks as needed
+        healthStatus.put("memoryUsage", getMemoryUsage());
+        healthStatus.put("diskSpace", getDiskSpace());
+
+        HttpHeaders headers = getCommonHeaders("Health check endpoint");
+        HttpStatus status = databaseConnection ? HttpStatus.OK : HttpStatus.SERVICE_UNAVAILABLE;
+
+        return new ResponseEntity<>(healthStatus, headers, status);
+    }
+
+    private boolean checkDatabaseConnection() {
+        try {
+            wordService.getAllWords();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private Map<String, Long> getMemoryUsage() {
+        Runtime runtime = Runtime.getRuntime();
+        Map<String, Long> memoryInfo = new HashMap<>();
+        memoryInfo.put("total", runtime.totalMemory());
+        memoryInfo.put("free", runtime.freeMemory());
+        memoryInfo.put("used", runtime.totalMemory() - runtime.freeMemory());
+        return memoryInfo;
+    }
+
+    private Map<String, Long> getDiskSpace() {
+        java.io.File root = new java.io.File("/");
+        Map<String, Long> diskInfo = new HashMap<>();
+        diskInfo.put("total", root.getTotalSpace());
+        diskInfo.put("free", root.getFreeSpace());
+        diskInfo.put("usable", root.getUsableSpace());
+        return diskInfo;
+    }
+
+    private HttpHeaders getCommonHeaders(String description) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc", description);
+        headers.add("content-type", "application/json");
+        headers.add("date", new Date().toString());
+        headers.add("server", "Spring Boot");
+        headers.add("version", "1.0.0");
+        return headers;
+    }
+}
+```
+
+This new `HealthController` class offers several improvements:
+
+1. **Dedicated controller**: It's a separate controller focused on health and monitoring, following the Single Responsibility Principle.
+
+2. **Comprehensive health check**: The `healthCheck()` method provides a detailed health status, including database connectivity, word count, memory usage, and disk space.
+
+3. **Modular design**: Different aspects of the health check are separated into methods, making the code more maintainable and easier to extend.
+
+4. **Resource monitoring**: It includes basic system resource monitoring (memory and disk space), which can be crucial for identifying potential issues.
+
+5. **Consistent headers**: It uses a `getCommonHeaders()` method similar to the `WordController`, maintaining consistency across the API.
+
+6. **Appropriate mapping**: The controller uses the `/api/health` endpoint, which is a common convention for health check APIs.
+
+
+
+> This health check endpoint provides a comprehensive overview of your application's health, making it valuable for monitoring and troubleshooting in production environments.
+
+### @Service business logic examples
+
+#### Real Use Case #1
 
 Let's consider a <mark>real use case where the service layer becomes key</mark>:
 
@@ -210,7 +320,7 @@ In this case, the service layer is key because:
 
 > This structure allows your application to grow and adapt to new requirements more easily, demonstrating the importance of a well-structured service layer in a Spring Boot application.
 
-### Real Use Case #2
+#### Real Use Case #2
 
 Let's consider another real-world use case where the WordService would be essential: <mark>implementing a personalized word recommendation system based on a user's learning history and performance.</mark>
 
@@ -310,13 +420,10 @@ This use case demonstrates why the service layer is key:
 
 > This example showcases how a well-structured service layer can handle complex, data-intensive operations while keeping the controller lean and focused on its primary responsibility of managing HTTP interactions.
 
-
-
 ## Repository
 
 ```java
 public interface WordRepository extends JpaRepository<Word, String> {
-
 ```
 
 > <mark>JpaRepository is an interface provided by Spring Data JPA</mark> that simplifies database operations.
