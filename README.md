@@ -10,7 +10,7 @@ This document serves as a guide and log for the backend development of the PRA#0
 
 ### **Common Tasks:**
 
-- [ ] Create User @Entity
+- [x] Create User @Entity
 - [ ] Create UserController (Rest API controller)
 - [ ] Implement UserRepository
 - [ ] Configure application properties with local H2 database
@@ -36,15 +36,13 @@ This document serves as a guide and log for the backend development of the PRA#0
 
 ### Common Part
 
-| Task                            | Estimated Time | Actual Time | Impediments (if any) | Error Logs |
-| ------------------------------- | -------------- | ----------- | -------------------- | ---------- |
-| Create User @Entity             | 1 hours        | X hours     |                      |            |
-| Create UserController           | 1 hours        | X hours     |                      |            |
-| Implement UserRepository        | 0.5 hours      | X hours     |                      |            |
-| Configure H2 database           | 0.5 hours      | X hours     |                      |            |
-| Develop UserService             | 2 hours        | X hours     |                      |            |
-| Test all endpoints with Postman | 2 hours        | X hours     |                      |            |
-| **Total**                       | **7 hours**    |             |                      |            |
+| Task                     | Estimated Time | Actual Time | Impediments (if any) | New Concepts                                                                                                 |
+| ------------------------ | -------------- | ----------- | -------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Create User @Entity      | 1 hours        | 45 min      |                      | @PrePersist<br/>@GeneratedValue(strategy = GenerationType.UUID)<br/>@Column(unique = true, nullable = false) |
+| Create UserController    | 1 hours        | X hours     |                      |                                                                                                              |
+| Implement UserRepository | 0.5 hours      | X hours     |                      |                                                                                                              |
+| Configure H2 database    | 0.5 hours      | X hours     |                      |                                                                                                              |
+| Develop UserService      | 2 hours        | X hours     |                      |                                                                                                              |
 
 ### Optional Part
 
