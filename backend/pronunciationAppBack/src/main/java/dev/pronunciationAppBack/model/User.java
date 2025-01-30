@@ -11,7 +11,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data // combines @Getter, @Setter, @ToString, @EqualsAndHashCode, and @RequiredArgsConstructor into a single annotation.
 @Entity
-public class UserApp {
+@Table(name = "`USER`")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
