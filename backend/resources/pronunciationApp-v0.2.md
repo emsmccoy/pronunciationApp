@@ -264,8 +264,6 @@ This new `HealthController` class offers several improvements:
 
 6. **Appropriate mapping**: The controller uses the `/api/health` endpoint, which is a common convention for health check APIs.
 
-
-
 > This health check endpoint provides a comprehensive overview of your application's health, making it valuable for monitoring and troubleshooting in production environments.
 
 ### @Service business logic examples
