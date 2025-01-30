@@ -36,6 +36,13 @@ public class HealthController {
         healthStatus.put("memoryUsage", getMemoryUsage());
         healthStatus.put("diskSpace", getDiskSpace());
 
+        // Add PID, Java version, and other process info
+        healthStatus.put("pid", ProcessHandle.current().pid());
+        healthStatus.put("javaVersion", System.getProperty("java.version"));
+        healthStatus.put("javaVendor", System.getProperty("java.vendor"));
+        healthStatus.put("osName", System.getProperty("os.name"));
+        healthStatus.put("osVersion", System.getProperty("os.version"));
+
         HttpHeaders headers = getCommonHeaders("Health check endpoint");
         HttpStatus status = databaseConnection ? HttpStatus.OK : HttpStatus.SERVICE_UNAVAILABLE;
 
