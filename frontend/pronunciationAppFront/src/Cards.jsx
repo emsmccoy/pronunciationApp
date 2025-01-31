@@ -5,6 +5,7 @@ import {
   CardContent,
   Typography,
   Container,
+  Chip,
   Grid,
 } from "@mui/material";
 import { fetchWords } from "./data-api";
@@ -52,6 +53,15 @@ export default function WordList() {
                 }}
               >
                 <CardContent>
+                  <Chip 
+                    label={word.difficulty} 
+                    size="small" 
+                    color={word.difficulty === "easy" ? "success" :
+                          word.difficulty === "medium" ? "warning" :
+                        word.difficulty === "hard" ? "error" :
+                      null}
+                    sx={{ mt: 0.5 }}
+                  />
                   <Typography
                     variant="h6"
                     component="div"
@@ -62,6 +72,14 @@ export default function WordList() {
                   <Typography variant="body2" sx={{ color: "#B0B8C1" }}>
                     Pronunciation: {word.pronunciation}
                   </Typography>
+                  {word.synonyms?.length > 0 && (
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "#B0B8C1", mt: 1 }}
+                    >
+                      Synonyms: {word.synonyms.join(", ")}
+                    </Typography>
+                  )}
                 </CardContent>
               </Card>
             </Grid>
