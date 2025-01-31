@@ -10,6 +10,8 @@ This document serves as both a guide and a log for the PRA#01 React frontend dev
 
 ### **Tasks Completed**:
 
+    **Common**
+
 - [x] Postman mock server is set up with correct endpoint.
 
 - [x] Axios function is implemented in a decoupled manner.
@@ -18,17 +20,17 @@ This document serves as both a guide and a log for the PRA#01 React frontend dev
 
 - [x] User component renders correctly with avatar.
 
-- [ ] Difficulty levels and filtering are functional.
+- [x] Difficulty levels and filtering are functional.
 
-- [ ] Synonyms rendering is implemented and error-free.
+- [x] Synonyms rendering is implemented and error-free.
+  
+  **Optional** 
 
-### **Testing**:
+- [x] CSS Enhancements: transient effect on hover
 
-- [ ] All components are tested locally.
+- [ ] Animation Libraries
 
-- [ ] Error handling in data fetching.
-
-- [ ] UI is responsive and behaves as expected.
+- [ ] Enhanced Card Features
 
 ---
 
@@ -36,22 +38,23 @@ This document serves as both a guide and a log for the PRA#01 React frontend dev
 
 ### Common Part
 
-| Task                                          | Estimated Time | Actual Time                    | Impediments (if any)                                                                     | Error logs                                                     |
-| --------------------------------------------- | -------------- | ------------------------------ | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| Set up Postman mock server                    | 1 hour         | 2:30h                          | mock server JSON and the data data-api fetched had different structures                  | TypeError: Cannot read properties of undefined (reading 'map') |
-| Implement axios function for data fetching    | 1 hour         | 1:15 (and back to mock server) | Needed to install font roboto, emotion and material ui.                                  |                                                                |
-| Create user JSON structure                    | 1 hour         | 10 min                         |                                                                                          |                                                                |
-| Develop user component with avatar            | 2 hours        | 4 hours                        | potsman example didn't have the URL. <br/> Error rendering due to useEffect() and find() |                                                                |
-| Add difficulty levels and implement filtering | 2 hours        |                                |                                                                                          |                                                                |
+| Task                                          | Estimated Time | Actual Time                    | Impediments and errors                                                                   |
+| --------------------------------------------- | -------------- | ------------------------------ | ---------------------------------------------------------------------------------------- |
+| Set up Postman mock server                    | 1 hour         | 2:30h                          | mock server JSON and the data data-api fetched had different structures                  |
+| Implement axios function for data fetching    | 1 hour         | 1:15 (and back to mock server) | Needed to install font roboto, emotion and material ui.                                  |
+| Create user JSON structure                    | 1 hour         | 10 min                         |                                                                                          |
+| Develop user component with avatar            | 2 hours        | 4 hours                        | Potsman example didn't have the URL. <br/> Error rendering due to useEffect() and find() |
+| Add difficulty levels and implement filtering | 2 hours        | 1:30 hours                     |                                                                                          |
+| **Total**                                     | **7 hours**    | **9:25 hours**                 |                                                                                          |
 
 ### Optional Part
 
-| Task                   | Estimated Time | Actual Time | Impediments (if any) |
-| ---------------------- | -------------- | ----------- | -------------------- |
-| CSS Enhancements       | 1:30 hours     |             |                      |
-| Animation Libraries    | 1 hour         |             |                      |
-| Enhanced Card Features | 1 hour         |             |                      |
-| **Total**              | **3:30 hours** |             |                      |
+| Task                                        | Estimated Time | Actual Time | Impediments and errors |
+| ------------------------------------------- | -------------- | ----------- | ---------------------- |
+| CSS Enhancements: transient effect on hover | 1:30 hours     | 30 min      |                        |
+| Animation Libraries                         | 1 hour         |             |                        |
+| Enhanced Card Features                      | 1 hour         |             |                        |
+| **Total**                                   | **3:30 hours** | 30 min      |                        |
 
 ---
 
