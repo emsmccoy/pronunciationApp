@@ -1,7 +1,5 @@
 # pronunciationApp-v0.2-model
 
-
-
 ```mermaid
 classDiagram
     class User {
@@ -73,5 +71,4 @@ classDiagram
     Stage "*" -- "1" Level : has level
     Stage "1" -- "*" StageWords : has tracked words
     StageWords "1" -- "1" Word : has a word  
-
 ```
