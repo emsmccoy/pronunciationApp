@@ -64,7 +64,19 @@ public class WordService {
 }
 ```
 
-### Refactoring WordController
+### Why is this refactoring necessary?
+
+1. **Separation of Concerns**: The service layer separates business logic from the controller, making the code more modular and easier to maintain.
+
+2. **Reusability**: Business logic in the service can be reused across different controllers or other services.
+
+3. **Testability**: It's easier to unit test business logic in a service class than in a controller.
+
+4. **Scalability**: As the application grows, having a separate service layer makes it easier to manage and scale the codebase.
+
+5. **Abstraction**: The controller doesn't need to know about the repository implementation, providing better abstraction.
+
+#### Refactoring WordController
 
 ```java
 @RestController
@@ -150,19 +162,7 @@ public class WordController {
 }
 ```
 
-## Why is this refactoring necessary?
-
-1. **Separation of Concerns**: The service layer separates business logic from the controller, making the code more modular and easier to maintain.
-
-2. **Reusability**: Business logic in the service can be reused across different controllers or other services.
-
-3. **Testability**: It's easier to unit test business logic in a service class than in a controller.
-
-4. **Scalability**: As the application grows, having a separate service layer makes it easier to manage and scale the codebase.
-
-5. **Abstraction**: The controller doesn't need to know about the repository implementation, providing better abstraction.
-
-### Check health
+## Check health
 
 Well create a new controller class that incorporates the <mark>health check endpoint along with other best practices</mark>. 
 
@@ -266,7 +266,7 @@ This new `HealthController` class offers several improvements:
 
 > This health check endpoint provides a comprehensive overview of your application's health, making it valuable for monitoring and troubleshooting in production environments.
 
-### @Service business logic examples
+## @Service business logic examples
 
 #### Real Use Case #1
 
@@ -418,7 +418,7 @@ This use case demonstrates why the service layer is key:
 
 > This example showcases how a well-structured service layer can handle complex, data-intensive operations while keeping the controller lean and focused on its primary responsibility of managing HTTP interactions.
 
-## Repository
+## JpaRepository
 
 ```java
 public interface WordRepository extends JpaRepository<Word, String> {
@@ -441,3 +441,58 @@ In the case of `WordRepository`, extending` JpaRepository` is a good idea becaus
 4. Type safety: JpaRepository uses generics (<Word, String>), ensuring type safety for the entity (Word) and its ID type (String).
 
 5. Extensibility: You can easily add more custom methods as your application's requirements grow.
+
+### Queries
+
+- [Lab#SB08-3: H2 and API Rest – albertprofe wiki](https://albertprofe.dev/springboot/sblab8-3.html#jpa-query-methods)
+
+**JPA Derived Query Methods**
+
+`Spring Data JPA` can automatically create queries based on method names in your repository interface.
+
+```java
+public interface UserRepository 
+        extends JpaRepository<User, Long> {
+    List<User> findByLastNameAndAge(String lastName, int age);
+}
+```
+
+**@Query Annotation**
+
+You can use the `@Query` annotation to define custom JPQL queries.
+
+```java
+public interface UserRepository 
+        extends JpaRepository<User, Long> {
+    @Query("SELECT u FROM User u WHERE u.emailAddress = ?1")
+    User findByEmailAddress(String emailAddress);
+}
+```
+
+**EntityManager with JPQL**
+
+For more complex queries, you can use the `EntityManager` directly with JPQL.
+
+```java
+@PersistenceContext
+private EntityManager entityManager;
+
+public List<User> findUsersByAgeRange(int minAge, int maxAge) {
+    String jpql = "SELECT u FROM User u WHERE u.age BETWEEN :minAge AND :maxAge";
+    return entityManager.createQuery(jpql, User.class)
+            .setParameter("minAge", minAge)
+            .setParameter("maxAge", maxAge)
+            .getResultList();
+}
+```
+
+**Native SQL Queries**
+
+When you need to use database-specific features, you can write native SQL queries.
+
+```java
+public interface UserRepository extends JpaRepository<User, Long> {
+    @Query(value = "SELECT * FROM users WHERE status = ?1", nativeQuery = true)
+    List<User> findUsersByStatus(int status);
+}
+```
