@@ -139,10 +139,6 @@ The API was returning the array of words directly in the `response.data`, not n
 
 To solve this error, implement a conditional check before rendering the content that depends on the data:
 
-jsx
-
-CopiarEditar
-
 `return (   <>     {user ? <h1>{user.name}</h1> : <p>Loading...</p>}   </> );`
 
 This solution prevents the error on the first render by showing a loading message while the data is still being fetched.
@@ -155,10 +151,6 @@ This solution prevents the error on the first render by showing a loading messag
 2. **Dependencies in `useEffect`:** Identify all dependencies used inside the `useEffect` hook and ensure they are included in the dependency array. This guarantees that the effect is re-executed when relevant values change.
 
 ### **Alternative Approach Using Loading State:**
-
-jsx
-
-CopiarEditar
 
 `const [isLoading, setIsLoading] = useState(true);  useEffect(() => {   const fetchData = async () => {     try {       const data = await fetchUsers();       setUsers(data);     } finally {       setIsLoading(false);     }   };   fetchData(); }, []);  return (   <>     {isLoading ? <p>Loading...</p> : user && <h1>{user.name}</h1>}   </> );`
 
