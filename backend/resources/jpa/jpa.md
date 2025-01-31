@@ -107,8 +107,6 @@ These technologies work together to simplify database operations in Java applica
 - Spring Data JPA: Part of the Spring Framework ecosystem
 - Database vendors: MySQL (Oracle), PostgreSQL (open-source), Oracle Database, Microsoft SQL Server
 
-
-
 ## CrudRepository vs. JpaRepository
 
 [In Spring Boot what is the difference between CrudRepository and JpaRepository in extending a Java repository interface - Stack Overflow](https://stackoverflow.com/questions/72058502/in-spring-boot-what-is-the-difference-between-crudrepository-and-jparepository-i)
