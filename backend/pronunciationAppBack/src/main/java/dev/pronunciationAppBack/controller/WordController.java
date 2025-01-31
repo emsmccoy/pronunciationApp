@@ -19,12 +19,6 @@ public class WordController {
     @Autowired
     private WordService wordService;
 
- /*   @GetMapping("/hello")
-    public ResponseEntity<String> hello() {
-        HttpHeaders headers = getCommonHeaders("Hello endpoint");
-        return new ResponseEntity<>("hello Emiliano, are you sleeping?", headers, HttpStatus.OK);
-    }*/
-
     @GetMapping
     public ResponseEntity<List<Word>> getAllWords() {
         List<Word> words = wordService.getAllWords();
