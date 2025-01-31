@@ -2,7 +2,8 @@
 
 ## Overview
 
-This document serves as both a guide and a log for the PRA#01 React frontend development task. 
+This document serves as both a guide and a log for the PRA#01 React frontend development task.<br/>
+Images and a video demo can be found in the [PRA](/PRA) folder
 
 ---
 
