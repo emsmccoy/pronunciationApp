@@ -101,3 +101,24 @@ ngrok config add-authtoken 2sP2gQO0FD8XXXXXXXXXXXJMtXVNSa57MvSxqeYHu
 # Deploy your app online
 ngrok http http://localhost:8080
 ```
+
+## localhost.run
+
+> **localhost.run** doesn't require any downloads or installations, making it convenient for quickly sharing your local Spring Boot application.
+
+To expose your local Spring Boot application running on port 8080 using `localhost.run`, follow these steps:
+
+1. Ensure your Spring Boot application is running on localhost:8080.
+2. Open a terminal or command prompt.
+3. Run the following command:
+   
+   ```bash
+   ssh -R 80:localhost:8080 localhost.run
+   ```
+
+This command will create a secure tunnel from localhost.run to your local Spring Boot application.
+
+4. After running the command, localhost.run will provide you with a public URL that you can use to access your application. The URL will look something like `https://random-subdomain.localhost.run`.
+5. Share this URL with others to allow them to access your local Spring Boot application over the internet.
+
+> Keep the terminal window open to maintain the tunnel. To stop the tunnel, simply press Ctrl+C in the terminal where the localhost.run command is running.
