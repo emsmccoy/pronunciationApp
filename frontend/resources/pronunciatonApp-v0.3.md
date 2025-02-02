@@ -6,6 +6,8 @@
 
 - [GitHub - AlbertProfe/basicRegisterForm](https://github.com/AlbertProfe/basicRegisterForm)
 
+- [pronunciationApp -test-leaflet #684324f](https://github.com/AlbertProfe/pronunciationApp/tree/684324f309ae643e0d32f9d2d660a9500cd09fe5/frontend/pronunciationAppFront)
+
 ## Basic React Register Form
 
 > Register form using HTML tags for a user with username, email, and password.
@@ -175,357 +177,291 @@ export default function RegisterForm() {
 }
 ```
 
+## MUI React Register Form
+
+### Home
+
+> This component serves as a simple home page with conditional rendering based on the user's login status, providing options to log in, register, or log out.
+
+1. Inside the component `Home`:
+   
+   - It uses the `useNavigate` hook for navigation.
+   - It manages state for user validation and username.
+   - It defines functions to handle navigation to register and login pages, and to handle logout.
+
+2. The component's UI:
+   
+   - Displays a welcome message and a `Header` component.
+   - If the user is validated (logged in):
+     - Shows a greeting with the username
+     - Provides a <mark>logout</mark> button
+   - If the user is not validated (logged out):
+     - Offers login and register buttons
+
+3. The UI is styled using Material-UI components like `Box`, `Typography`, and `Button`.
 
 
 
-
-
-
-
-
-**Home View**: Main landing page with app introduction and navigation
-
-- **HomeForm View**: Login/Signup form for user authentication
-- **UserLogged View**: Personalized dashboard for logged-in users
-
-**Practice**
-
-Three <mark>variants</mark> for displaying pronunciation cards:
-
-- Grid layout
-- Carousel
-- Swipe pair cards
-
-**About**
-
-- Information about the app and its features
-
-### Home Page Components
-
-The Home page will consist of three main views:
-
-**Home View**
-
-- App logo and tagline
-- Brief description of the app's purpose
-- "Get Started" button leading to HomeForm
-
-**HomeForm View**
-
-- Toggle between Login and Signup forms
-- Input fields for username and password
-- Submit button
-
-**UserLogged View**
-
-- Welcome message with user's name
-- Quick stats on practice sessions
-- Link to start a new practice session
-
-### Practice Page Variants
-
-**Grid Layout**
-
-- Display words in a responsive grid
-- Each card shows the word and its pronunciation
-- Click to hear pronunciation
-
-**Carousel**
-
-- Horizontal scrolling carousel of word cards
-- Navigation arrows for moving between cards
-- Current card centered with pronunciation audio control
-
-**Swipe Pair Cards**
-
-- Two cards shown side by side
-- Word on one card, pronunciation on the other
-- Swipe right if correct, left if incorrect
-
-## Router Implementation
-
-To implement the router, we'll use React Router. Here's a basic setup:
+`./frontend/pronunciationAppFront/src/pages/Home.jsx`
 
 ```jsx
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './components/Home';
-import Practice from './components/Practice';
-import About from './components/About';
+import { useNavigate } from "react-router-dom";
+import Header from "../components/Header.jsx";
+import { Button, Box, Typography } from "@mui/material";
+import { useState } from "react";
 
-function App() {
+export default function Home() {
+  const navigate = useNavigate();
+  const [isValidated, setIsValidated] = useState(true);
+  const [username, setUsername] = useState("albertprofe");
+
+  const handleRegisterClick = () => {
+    navigate("/register");
+  };
+
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
+
+  const handleLogout = () => {
+    setIsValidated(false);
+  };
+
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/practice" component={Practice} />
-        <Route path="/about" component={About} />
-      </Switch>
-    </Router>
+    <>
+      <h2>Welcome to PronunciationApp</h2>
+      <Header />
+      <Box sx={{ textAlign: "center", mt: 4 }}>
+        {isValidated ? (
+          <Box>
+            <Typography variant="h5" sx={{ mb: 2 }}>
+              Hello @{username}
+            </Typography>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+          </Box>
+        ) : (
+          <Box sx={{ mt: 3 }}>
+            <Button
+              variant="contained"
+              onClick={handleLoginClick}
+              color="primary"
+              sx={{ mr: 2 }}
+            >
+              Login
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleRegisterClick}
+            >
+              Register
+            </Button>
+          </Box>
+        )}
+      </Box>
+    </>
   );
 }
 ```
 
-This setup creates routes for our main pages. The Home component will need to handle its own sub-views (Home, HomeForm, UserLogged) using state or nested routes.
+### Login
 
-#### Named and Default exportations
+React component for a login form using Material-UI (MUI):
 
-> Curly braces `{}` in React imports are used to distinguish between default exports and named exports
+1. It creates a custom<mark> dark theme for MUI components.</mark>
 
-1. **Named exports**: When a module uses <mark>named exports</mark>, you need to use curly braces {} to import specific items. This is the case for `BrowserRouter`, `Route`, and `Switch` from 'react-router-dom'.
+2. The `LoginForm` component:
    
-   ```jsx
-   import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-   ```
+   - Uses `useState` to manage form data (email and password) and validation errors.
+   - Implements form validation for email and password fields.
+   - Handles form submission and input changes.
 
-2. **Default exports**: When a module has a <mark>default</mark> export, you import it without curly braces. This is likely the case for your component files like `About`.
+3. The UI consists of:
    
-   ```jsx
-    import About from './components/About';
-   ```
+   - A styled form container
+   - Email and password input fields
+   - A submit button
 
-The reason for this distinction is how modules export their contents[1](https://blog.stackademic.com/why-do-some-imports-use-d194c00cb391?gi=4707c297c748):
+4. The form uses <mark>MUI components</mark> like `TextField` and `Button`, styled according to the custom theme.
 
-- Default export: `export default myVariable;`
-- Named export: `export const myVariable = 'value';`
+5. It includes basic error handling and display for invalid inputs.
 
-<mark>It's important to note that a single file can have both default and named exports</mark>. This is why you might see imports like: 
+
+
+`frontend/pronunciationAppFront/src/pages/Login.jsx`
 
 ```jsx
-import React, { useState } from 'react'
-```
+import { useState } from "react";
+import {
+  TextField,
+  Button,
+  Box,
+  Typography,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material";
 
-Citations:
+// Create a custom theme to match the main CSS
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#4b6cb7",
+    },
+    background: {
+      default: "transparent",
+      paper: "rgba(255, 255, 255, 0.05)",
+    },
+    text: {
+      primary: "#F0F4F8",
+    },
+  },
+  typography: {
+    fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif",
+    h5: {
+      fontSize: "2em",
+      lineHeight: 1.1,
+    },
+  },
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: "rgba(255, 255, 255, 0.3)",
+            },
+            "&:hover fieldset": {
+              borderColor: "rgba(255, 255, 255, 0.5)",
+            },
+          },
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          letterSpacing: "0.5px",
+        },
+      },
+    },
+  },
+});
 
-[1] [What is the Difference Between Default and Named Exports in JavaScript?](https://www.freecodecamp.org/news/difference-between-default-and-named-exports-in-javascript/)
+export default function LoginForm() {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-## Axios
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+  });
 
-- [Getting Started | Axios Docs](https://axios-http.com/docs/intro) : Promise based HTTP client for the browser and node.js
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = {
+      email: "",
+      password: "",
+    };
 
-### What is Axios?
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+      isValid = false;
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Invalid email format";
+      isValid = false;
+    }
 
-> Axios is a [promise-based](https://javascript.info/promise-basics) HTTP Client for [`node.js`](https://nodejs.org) and the browser. It is [isomorphic](https://www.lullabot.com/articles/what-is-an-isomorphic-application) (= it can run in the browser and nodejs with the same codebase). 
-> 
-> On the server-side it uses the native node.js `http` module, while on the client (browser) it uses XMLHttpRequests.
+    // Password validation
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+      isValid = false;
+    } else if (formData.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+      isValid = false;
+    }
 
-### CRUD implementation
+    setErrors(newErrors);
+    return isValid;
+  };
 
-Now, we could complete the implementation of all <mark>CRUD (Create, Read, Update, Delete) operations</mark> for our `api.js` file using Axios with our `BASE_URL`.
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      // Submit logic here
+      console.log("Login successful:", formData);
+    }
+  };
 
-```javascript
-// api.js
-import axios from "axios";
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-const BASE_URL = "https://1e84671c-879b-423f-b798-dfa33a0482f6.mock.pstmn.io";
+  return (
+    <ThemeProvider theme={theme}>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        noValidate
+        sx={{
+          marginTop: "60px",
+          maxWidth: "400px",
+          mx: "auto",
+          p: 3,
+          backgroundColor: "background.paper",
+          borderRadius: 2,
+          boxShadow: "0px 4px 6px rgba(0,0,0,0.1)",
+          textAlign: "center",
+        }}
+      >
+        <Typography variant="h5" gutterBottom>
+          Login
+        </Typography>
 
-// READ: Fetch all words
-export const fetchWords = async () => {
-  try {
-    const response = await axios.get(`${BASE_URL}/words`);
-    return response.data.words;
-  } catch (error) {
-    console.error("Error fetching words:", error);
-    throw error;
-  }
-};
+        <TextField
+          fullWidth
+          margin="normal"
+          label="Email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          error={!!errors.email}
+          helperText={errors.email}
+          required
+        />
 
-// CREATE: Add a new word
-export const createWord = async (newWord) => {
-  try {
-    const response = await axios.post(`${BASE_URL}/words`, { word: newWord });
-    return response.data;
-  } catch (error) {
-    console.error("Error creating a new word:", error);
-    throw error;
-  }
-};
+        <TextField
+          fullWidth
+          margin="normal"
+          label="Password"
+          name="password"
+          type="password"
+          value={formData.password}
+          onChange={handleChange}
+          error={!!errors.password}
+          helperText={errors.password}
+          required
+        />
 
-// UPDATE: Update an existing word by ID
-export const updateWord = async (id, updatedWord) => {
-  try {
-    const response = await axios.put(`${BASE_URL}/words/${id}`, { word: updatedWord });
-    return response.data;
-  } catch (error) {
-    console.error(`Error updating the word with ID ${id}:`, error);
-    throw error;
-  }
-};
-
-// DELETE: Delete a word by ID
-export const deleteWord = async (id) => {
-  try {
-    const response = await axios.delete(`${BASE_URL}/words/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error(`Error deleting the word with ID ${id}:`, error);
-    throw error;
-  }
-};
-```
-
-### Explanation of Each Function:
-
-1. **`fetchWords`**:
-   
-   - Sends a `GET` request to fetch all words from the server.
-   - Returns the list of words.
-   - `${BASE_URL}/words` is a <mark>string interpolation in JavaScript</mark>, specifically using a template literal: the `${}` syntax within a template literal is used for string interpolation [1] [2].
-
-2. **`createWord`**:
-   
-   - Sends a `POST` request to add a new word.
-   - Takes `newWord` as an argument, which is the word to be added.
-   - Returns the server's response.
-
-3. **`updateWord`**:
-   
-   - Sends a `PUT` request to update an existing word by its ID.
-   - Takes `id` (the unique identifier of the word) and `updatedWord` (the updated value of the word) as arguments.
-   - Returns the updated data from the server.
-
-4. **`deleteWord`**:
-   
-   - Sends a `DELETE` request to remove a word by its ID.
-   - Takes `id` as an argument.
-   - Returns the server's response.
-
-Citations:
-
-[1]  [JavaScript Template Strings](https://www.w3schools.com/js/js_string_templates.asp)
-
-[2] [Template literals (Template strings) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
-
-**Usage Example:**
-
-Here’s how you might use these functions in your application:
-
-```javascript
-import { fetchWords, createWord, updateWord, deleteWord } from "./api";
-
-const main = async () => {
-  try {
-    // Fetch all words
-    const words = await fetchWords();
-    console.log("Fetched words:", words);
-
-    // Create a new word
-    const newWord = "example";
-    const createdWord = await createWord(newWord);
-    console.log("Created word:", createdWord);
-
-    // Update an existing word
-    const updatedWord = "updated-example";
-    const updatedResponse = await updateWord(createdWord.id, updatedWord);
-    console.log("Updated word:", updatedResponse);
-
-    // Delete a word
-    const deletedResponse = await deleteWord(createdWord.id);
-    console.log("Deleted word:", deletedResponse);
-  } catch (error) {
-    console.error("An error occurred:", error);
-  }
-};
-
-main();
-```
-
-## File Navigation
-
-> To navigate files for import and export in React, we can use **relative paths or implement absolute imports**. 
-
-Here's how to handle file navigation in your project structure:
-
-## Relative Paths
-
-When using relative paths, you navigate based on the current file's location:
-
-- `./` refers to the current directory
-- `../` moves up one directory
-- `../../` moves up two directories, and so on
-
-For our structure, here's how you might import files:
-
-```javascript
-// In App.jsx
-import Header from './Header';
-import Home from './Home';
-import { getData } from './data-api';
-
-// In Home.jsx
-import heroImage from './assets/hero-image.png';
-```
-
-## Absolute Imports
-
-To simplify imports and avoid long relative paths, you can set up absolute imports:
-
-1. Create a `jsconfig.json` file in your project root:
-
-```json
-{
-  "compilerOptions": {
-    "baseUrl": "src"
-  }
+        <Button fullWidth variant="contained" type="submit" sx={{ mt: 2 }}>
+          Login
+        </Button>
+      </Box>
+    </ThemeProvider>
+  );
 }
 ```
-
-2. Now you can import using absolute paths:
-
-```javascript
-// From anywhere in your project
-import Header from 'components/Header';
-import { getData } from 'utils/data-api';
-import heroImage from 'assets/hero-image.png';
-```
-
-## Reorganizing Project Structure
-
-To improve organization, move files into appropriate folders:
-
-```
-src/
-├── components/
-│   ├── Cards.jsx
-│   └── Header.jsx
-├── pages/
-│   ├── About.jsx
-│   ├── Home.jsx
-│   ├── NoPage.jsx
-│   └── Practice.jsx
-├── layout/
-│   └── Layout.jsx
-├── assets/
-│   └── hero-image.png
-├── utils/
-│   └── data-api.js
-├── styles/
-│   ├── App.css
-│   └── index.css
-├── App.jsx
-└── main.jsx
-```
-
-After reorganizing, update imports:
-
-```javascript
-// In App.jsx
-import Header from './components/Header';
-import Home from './pages/Home';
-import { getData } from './utils/data-api';
-
-// In pages/Home.jsx
-import heroImage from '../assets/hero-image.png';
-```
-
-Using absolute imports with this structure would be even cleaner:
-
-```javascript
-// In any file
-import Header from 'components/Header';
-import Home from 'pages/Home';
-import { getData } from 'utils/data-api';
-import heroImage from 'assets/hero-image.png';
-```
-
-Citations:
-[1] https://albertprofe.dev/reactjs/reactjs-app-router.html
