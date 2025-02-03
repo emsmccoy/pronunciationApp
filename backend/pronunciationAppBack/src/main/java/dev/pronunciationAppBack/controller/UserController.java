@@ -55,28 +55,43 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User user) {
-
+        if (user.getId() != null && !user.getId().equals(id)) {
+            return ResponseEntity.badRequest().headers(getHeaders("Mismatch between ID and user ID in body request")).build();
+        } else {
+            User updatedUser = userService.updateUser(user);
+            return ResponseEntity.ok().headers(getHeaders("User updated")).body(updatedUser);
+        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUserById(@PathVariable String id, @RequestBody User user){
-
+        if (userService.existsById(id)) {
+            userService.deleteUser(id);
+            return ResponseEntity.ok().headers(getHeaders("User deleted successfully")).build();
+        } else {
+            return ResponseEntity.notFound().headers(getHeaders("User not found")).build();
+        }
     }
 
     @DeleteMapping
     public ResponseEntity<String> deleteAllUsers(){
-
+        userService.deleteAllUsers();
+        if (userService.getAllUsers().isEmpty()){
+            return ResponseEntity.ok().headers(getHeaders("All users deleted succesfully")).build();
+        } else {
+            return ResponseEntity.notFound().headers(getHeaders("Could not delete all users")).build();
+        }
     }
 
-    private HttpHeaders getCommonHeaders(String description) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", description);
-        headers.add("content-type", "application/json");
-        headers.add("date", new Date().toString());
-        headers.add("server", "Spring Boot");
-        headers.add("version", "1.0.0");
-        headers.add("word-count", String.valueOf(userService.getUserCount()));
-        headers.add("object", "words");
-        return headers;
-    }
+//    private HttpHeaders getCommonHeaders(String description) {
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("desc", description);
+//        headers.add("content-type", "application/json");
+//        headers.add("date", new Date().toString());
+//        headers.add("server", "Spring Boot");
+//        headers.add("version", "1.0.0");
+//        headers.add("word-count", String.valueOf(userService.getUserCount()));
+//        headers.add("object", "words");
+//        return headers;
+//    }
 }
