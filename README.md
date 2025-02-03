@@ -11,8 +11,8 @@ This document serves as a guide and log for the backend development of the PRA#0
 ### **Common Tasks:**
 
 - [x] Create User @Entity
-- [ ] Create UserController (Rest API controller)
-- [ ] Implement UserRepository
+- [x] Create UserController (Rest API controller)
+- [x] Implement UserRepository
 - [ ] Configure application properties with local H2 database
 - [ ] Develop UserService
 - [ ] Test all endpoints with Postman
@@ -39,8 +39,8 @@ This document serves as a guide and log for the backend development of the PRA#0
 | Task                     | Estimated Time | Actual Time | Impediments (if any) | New Concepts                                                                                                 |
 | ------------------------ | -------------- | ----------- | -------------------- | ------------------------------------------------------------------------------------------------------------ |
 | Create User @Entity      | 1 hours        | 45 min      |                      | @PrePersist<br/>@GeneratedValue(strategy = GenerationType.UUID)<br/>@Column(unique = true, nullable = false) |
-| Create UserController    | 1 hours        | X hours     |                      |                                                                                                              |
-| Implement UserRepository | 0.5 hours      | X hours     |                      |                                                                                                              |
+| Create UserController    | 1 hours        | 1.5 hour    |                      | ResponseEntity utility methods <br/> Centralize headers handling using helper method                         |
+| Implement UserRepository | 0.5 hours      | 0.5 hours   |                      |                                                                                                              |
 | Configure H2 database    | 0.5 hours      | X hours     |                      |                                                                                                              |
 | Develop UserService      | 2 hours        | X hours     |                      |                                                                                                              |
 
