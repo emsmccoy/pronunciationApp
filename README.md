@@ -61,7 +61,7 @@ This document serves as a guide and log for the backend development of the PRA#0
 
 #### Postman Runner Results
 
-![](/home/emma/.config/marktext/images/2025-02-05-17-39-12-image.png)
+![](./PRA/PRA02-PostmanRunner.png)
 
 ---
 
