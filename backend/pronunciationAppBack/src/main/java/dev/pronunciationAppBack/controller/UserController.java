@@ -47,10 +47,11 @@ public class UserController {
     public ResponseEntity<User> createUser(@RequestBody User user){
         User createdUser = userService.createUser(user);
 
-        URI location = URI.create("/users/" + createdUser.getId());
         //return ResponseEntity.ok().body(createdUser);
-        //return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
-        return ResponseEntity.created(location).headers(getHeaders("User created successfully")).body(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+
+        //URI location = URI.create("/users/" + createdUser.getId());
+        //return ResponseEntity.created(location).headers(getHeaders("User created successfully")).body(user);
     }
 
     @PutMapping("/{id}")
