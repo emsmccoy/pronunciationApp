@@ -13,9 +13,9 @@ This document serves as a guide and log for the backend development of the PRA#0
 - [x] Create User @Entity
 - [x] Create UserController (Rest API controller)
 - [x] Implement UserRepository
-- [ ] Configure application properties with local H2 database
-- [ ] Develop UserService
-- [ ] Test all endpoints with Postman
+- [x] Configure application properties with local H2 database
+- [x] Develop UserService
+- [x] Test all endpoints with Postman
 
 ### Optional Tasks:
 
@@ -26,9 +26,9 @@ This document serves as a guide and log for the backend development of the PRA#0
 
 ### **Testing**:
 
-- [ ] All endpoints tested in Postman.
-- [ ] Error handling implemented in controllers.
-- [ ] Data persistence verified in H2 database.
+- [x] All endpoints tested in Postman.
+- [x] Error handling implemented in controllers.
+- [x] Data persistence verified in H2 database.
 
 ---
 
@@ -36,13 +36,14 @@ This document serves as a guide and log for the backend development of the PRA#0
 
 ### Common Part
 
-| Task                     | Estimated Time | Actual Time | Impediments (if any) | New Concepts                                                                                                 |
-| ------------------------ | -------------- | ----------- | -------------------- | ------------------------------------------------------------------------------------------------------------ |
-| Create User @Entity      | 1 hours        | 45 min      |                      | @PrePersist<br/>@GeneratedValue(strategy = GenerationType.UUID)<br/>@Column(unique = true, nullable = false) |
-| Create UserController    | 1 hours        | 1.5 hour    |                      | ResponseEntity utility methods <br/> Centralize headers handling using helper method                         |
-| Implement UserRepository | 0.5 hours      | 0.5 hours   |                      |                                                                                                              |
-| Configure H2 database    | 0.5 hours      | X hours     |                      |                                                                                                              |
-| Develop UserService      | 2 hours        | X hours     |                      |                                                                                                              |
+| Task                        | Estimated Time | Actual Time | Impediments (if any)                                                      | New Concepts                                                                                                 |
+| --------------------------- | -------------- | ----------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Create User @Entity         | 1 hours        | 45 min      |                                                                           | @PrePersist<br/>@GeneratedValue(strategy = GenerationType.UUID)<br/>@Column(unique = true, nullable = false) |
+| Create UserController       | 1 hours        | 1.5 hour    |                                                                           | ResponseEntity utility methods <br/> Centralize headers handling using helper method                         |
+| Implement UserRepository    | 0.5 hours      | 0.5 hours   |                                                                           |                                                                                                              |
+| Configure H2 database       | 0.5 hours      | 0.5 hours   |                                                                           |                                                                                                              |
+| Develop UserService         | 2 hours        | 1 hours     |                                                                           |                                                                                                              |
+| Test endpoints with Postman | 1.5 hours      | 2 hours     | data.sql only executes correctly if the table has been created previously | data.sql to introduce mock data <br/>postman data file to test and run collections                           |
 
 ### Optional Part
 
@@ -56,33 +57,11 @@ This document serves as a guide and log for the backend development of the PRA#0
 
 ---
 
-## Error Documentation and Solutions
+## Images
 
-### Error: `[ERROR_MESSAGE]`
+#### Postman Runner Results
 
-**Corresponding Task:** [RELATED_TASK]
-
-**Description:** [ERROR_DESCRIPTION]
-
-**Error Trace:**
-
-- **Class:** [CLASS_NAME]
-- **File:** [FILE_NAME]
-- **Line:** [ERROR_LINE]
-- **Stack Trace:**
-  - [ERROR_TRACE]
-
-**Possible Causes:**
-
-- [POTENTIAL_CAUSES]
-
-**Solution:**
-
-```java
-// Fixed code or solution
-```
-
-**Explanation:** [EXPLANATION_OF_THE_SOLUTION]
+![](/home/emma/.config/marktext/images/2025-02-05-17-39-12-image.png)
 
 ---
 
