@@ -19,8 +19,8 @@ This document serves as a guide and log for the backend development of the PRA#0
 
 ### Optional Tasks:
 
-- [ ] Configure Postgres database
-- [ ] Implement Faker for test data
+- [x] Configure Postgres database
+- [x] Implement Faker for test data
 - [ ] Add unit tests for services
 - [ ] Integration tests for controllers
 
@@ -47,21 +47,39 @@ This document serves as a guide and log for the backend development of the PRA#0
 
 ### Optional Part
 
-| Task                              | Estimated Time | Actual Time | Impediments (if any) |
-| --------------------------------- | -------------- | ----------- | -------------------- |
-| Configure Postgres database       | 2.5 hours      | X hours     |                      |
-| Implement Faker for test data     | 1 hours        | X hours     |                      |
-| Add unit tests for services       | 2 hours        | X hours     |                      |
-| Integration tests for controllers | 2 hours        | X hours     |                      |
-| **Total**                         | **7.5 hours**  | **X hours** |                      |
+| Task                              | Estimated Time | Actual Time | Impediments (if any) | New Concepts                                                                                                                        |
+| --------------------------------- | -------------- | ----------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Configure Postgres database       | 2.5 hours      | 2.5 hours   |                      |                                                                                                                                     |
+| Implement Faker for test data     | 1 hours        | 1.5 hours   |                      | Use Faker dinamically via API (not implemented) <br/> Streams: IntStream.range(x, y).mapToObj(i -> ...).collect(Collectors.toList() |
+| Add unit tests for services       | 2 hours        | X hours     |                      |                                                                                                                                     |
+| Integration tests for controllers | 2 hours        | X hours     |                      |                                                                                                                                     |
+| **Total**                         | **7.5 hours**  | **X hours** |                      |                                                                                                                                     |
 
 ---
 
 ## Images
 
+### <u>H2</u>
+
+#### Database Connection
+
+![](/home/emma/MyProjects/DAW/web/pronunciationApp/PRA/PRA02-H2.png)
+
 #### Postman Runner Results
 
 ![](./PRA/PRA02-PostmanRunner.png)
+
+### <u>Postgres</u>
+
+#### Database Connection (pgAdmin 4 & terminal)
+
+![](/home/emma/MyProjects/DAW/web/pronunciationApp/PRA/PRA02-pgAdmin4.png)
+
+![](/home/emma/.config/marktext/images/2025-02-06-16-29-38-PRA02-PostgresTerminal.png)
+
+#### Postman Runner Results
+
+![](/home/emma/MyProjects/DAW/web/pronunciationApp/PRA/PRA02-PostmanRunner-Postgres.png)
 
 ---
 
