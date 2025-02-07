@@ -64,7 +64,7 @@ This document serves as a guide and log for the backend development of the PRA#0
 
 #### Database Connection
 
-![](/home/emma/MyProjects/DAW/web/pronunciationApp/PRA/PRA02-H2.png)
+![](./PRA/PRA02-H2.png)
 
 #### Postman Runner Results
 
@@ -74,13 +74,13 @@ This document serves as a guide and log for the backend development of the PRA#0
 
 #### Database Connection (pgAdmin 4 & terminal)
 
-![](/home/emma/MyProjects/DAW/web/pronunciationApp/PRA/PRA02-pgAdmin4.png)
+![](./PRA/PRA02-pgAdmin4.png)
 
-![](/home/emma/.config/marktext/images/2025-02-06-16-29-38-PRA02-PostgresTerminal.png)
+![](/./PRA/PRA02-PostgresTerminal.png)
 
 #### Postman Runner Results
 
-![](/home/emma/MyProjects/DAW/web/pronunciationApp/PRA/PRA02-PostmanRunner-Postgres.png)
+![](./PRA/PRA02-PostmanRunner-Postgres.png)
 
 ---
 
