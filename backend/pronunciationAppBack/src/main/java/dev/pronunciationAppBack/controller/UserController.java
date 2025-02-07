@@ -65,7 +65,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUserById(@PathVariable String id, @RequestBody User user){
+    public ResponseEntity<String> deleteUserById(@PathVariable String id){
         if (userService.existsById(id)) {
             userService.deleteUser(id);
             return ResponseEntity.ok().headers(getHeaders("User deleted successfully")).build();
