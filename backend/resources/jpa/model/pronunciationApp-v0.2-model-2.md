@@ -16,6 +16,8 @@ The system also incorporates metadata like word difficulty, phonetic spelling, a
 
 The context assumes multiple users in a gamified learning environment where the **Word** class is <mark>the core entity driving the system.</mark>
 
+
+
 ```mermaid
 classDiagram
     class User {
@@ -86,4 +88,5 @@ classDiagram
     GameProgress "1" -- "*" Stage : is at stage
     Stage "*" -- "1" Level : has level
     Stage "1" -- "*" StageWord : has tracked words
+    Word "1" -- "*" StageWord : has stageword
 ```
