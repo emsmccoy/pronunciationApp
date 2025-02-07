@@ -51,7 +51,7 @@ This document serves as a guide and log for the backend development of the PRA#0
 | --------------------------------- | -------------- | ----------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | Configure Postgres database       | 2.5 hours      | 2.5 hours   |                      |                                                                                                                                     |
 | Implement Faker for test data     | 1 hours        | 1.5 hours   |                      | Use Faker dinamically via API (not implemented) <br/> Streams: IntStream.range(x, y).mapToObj(i -> ...).collect(Collectors.toList() |
-| Add unit tests for services       | 2 hours        | X hours     |                      |                                                                                                                                     |
+| Add unit tests for services       | 2 hours        | 1.5 hours   |                      | Mockito JUnit integration                                                                                                           |
 | Integration tests for controllers | 2 hours        | X hours     |                      |                                                                                                                                     |
 | **Total**                         | **7.5 hours**  | **X hours** |                      |                                                                                                                                     |
 
