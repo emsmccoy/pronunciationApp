@@ -1,18 +1,27 @@
 # PronunciationApp Frontend v0.3
 
-## Reference Lab
+## References
 
-- [GitHub - AlbertProfe/howRenderCycleWorks](https://github.com/AlbertProfe/howRenderCycleWorks)
-
-- [GitHub - AlbertProfe/basicRegisterForm](https://github.com/AlbertProfe/basicRegisterForm)
+**Labs**
 
 - [pronunciationApp -test-leaflet #684324f](https://github.com/AlbertProfe/pronunciationApp/tree/684324f309ae643e0d32f9d2d660a9500cd09fe5/frontend/pronunciationAppFront)
 
-## Basic React Register Form
+**Basic React Register Form**
 
 > Register form using HTML tags for a user with username, email, and password.
 
-### Reference
+- [GitHub - AlbertProfe/basicRegisterForm](https://github.com/AlbertProfe/basicRegisterForm)
+
+**How render cycle woks**
+
+> React's render cycle is a fundamental concept that every React developer
+>  should understand. It consists of three main phases: trigger, render, 
+> and commit. Let's explore each phase and see how we can observe them 
+> using different hooks like `useRef`, `useEffect`, and `useState`.
+
+- https://github.com/AlbertProfe/howRenderCycleWorks
+
+**Reference: exercices react.dev**
 
 - [Setting state triggers renders](https://react.dev/learn/state-as-a-snapshot#setting-state-triggers-renders)
 
@@ -200,8 +209,6 @@ export default function RegisterForm() {
 
 3. The UI is styled using Material-UI components like `Box`, `Typography`, and `Button`.
 
-
-
 `./frontend/pronunciationAppFront/src/pages/Home.jsx`
 
 ```jsx
@@ -291,8 +298,6 @@ React component for a login form using Material-UI (MUI):
 4. The form uses <mark>MUI components</mark> like `TextField` and `Button`, styled according to the custom theme.
 
 5. It includes basic error handling and display for invalid inputs.
-
-
 
 `frontend/pronunciationAppFront/src/pages/Login.jsx`
 
