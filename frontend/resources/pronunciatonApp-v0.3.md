@@ -29,6 +29,8 @@
 
 - [Using a single event handler for multiple fields](https://react.dev/learn/updating-objects-in-state#using-a-single-event-handler-for-multiple-fields)
 
+## React basic register form
+
 ### Summary
 
 This form includes:
@@ -470,3 +472,101 @@ export default function LoginForm() {
   );
 }
 ```
+
+## JS ES6
+
+- [JavaScript ES6](https://www.w3schools.com/Js/js_es6.asp)
+
+```jsx
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+```
+
+The code you provided contains several core key JavaScript concepts: 
+
+1. **Destructuring:javascript**
+   
+   ```javascript
+   const { name, value } = e.target;
+   ```
+   
+   This line extracts the 'name' and 'value' properties from the e.target object. It's a shorthand way of writing:javascript
+   
+   ```javascript
+   const name = e.target.name; 
+   const value = e.target.value;
+   ```
+
+2. **Spread operator (...)**
+   
+   ```javascript
+   ...prevData
+   ```
+   
+   The spread operator is used to create a copy of all the properties from the prevData object. It's used here to maintain all the existing form data while updating only the changed field.
+
+3. **Computed property name**
+   This syntax allows using the value of 'name' as the property name, dynamically updating the correct form field
+   
+   ```javascript
+    const prevData = { firstName: "John", lastName: "Smith" }; // Initial state
+    const name = "lastName"; // The property we want to update
+    const value = "Doe"; // The new value for the property
+   
+    const newData = {
+      ...prevData, // Spread all existing properties
+      [name]: value, // Update the 'lastName' property
+    };
+   
+    console.log(newData); 
+    // Output: { firstName: "John", lastName: "Doe" }
+   ```
+
+4. **Combining or Overwriting Properties**
+   You can combine or overwrite properties when creating a new object. If multiple objects are spread, properties from later objects overwrite those from earlier ones
+   
+   ```javascript
+   const updatedData = { ...prevData, lastName: "Doe" };
+   console.log(updatedData);
+   // Output: { firstName: "John", lastName: "Doe" }
+   ```
+
+5. **Literal Object: Curly Braces {}**
+    Curly braces are required because they define an object literal in JavaScript. Without them, the spread operator would not work correctly for objects.
+   
+   ```javascript
+     const prevData = { firstName: "John", lastName: "Smith" };
+   
+     // Using spread operator to copy properties into a new object
+     const newData = { ...prevData };
+   
+     console.log(newData);
+     // Output: { firstName: "John", lastName: "Smith" }
+   ```
+
+6. **Implicit Return vs. Non-Implicit (Explicit) Return in JavaScript**
+    An implicit return occurs when a function automatically returns the result of a single expression without requiring the return keyword. This is possible with arrow functions in JavaScript. Implicit returns make code more concise and are often used for simple, one-liner functions.
+   
+   ```javascript
+     const add = (a, b) => {
+         const sum = a + b; // Additional logic
+         return sum; // Explicitly returning the value
+     };
+     console.log(add(2, 3)); // Output: 5
+   ```
+
+7. **Syntax Element Parentheses**
+   Parentheses around parameters are required in some cases (e.g., multiple parameters), while parentheses around expressions are purely optional for grouping or readability purposes
+   
+   ```javascript
+    const square = x => x * x;
+    console.log(square(3)); // Output: 9
+   
+    const square = (x) => (x * x);
+    console.log(square(3)); // Output: 9
+   ```
