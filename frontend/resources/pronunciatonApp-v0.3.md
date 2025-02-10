@@ -88,7 +88,7 @@ This pattern is powerful because it allows you to completely change what a compo
 4. Inside the callback, a new object is created and returned. This object:
    
    - <mark>Spreads all properties from the previous state</mark> (`...prevData`)
-   - Adds or updates a property using computed property name syntax `[name]: value`
+   - Adds or updates a property using **computed property name** syntax `[name]: value`
 
 ```jsx
   const handleChange = (e) => {
@@ -475,7 +475,11 @@ export default function LoginForm() {
 
 ## JS ES6
 
+**JS 2015 (ES6)** also known as **ECMAScript 6 (ES6)**, **ECMAScript 6 (ES6)** is a significant update to JavaScript, introducing arrow functions, classes, template literals, let and const for variable declaration, enhanced object literals, destructuring, and more modern features for better code organization and readability.
+
 - [JavaScript ES6](https://www.w3schools.com/Js/js_es6.asp)
+
+### Syntax and tools used
 
 ```jsx
   const handleChange = (e) => {
@@ -489,7 +493,7 @@ export default function LoginForm() {
 
 The code you provided contains several core key JavaScript concepts: 
 
-1. **Destructuring:javascript**
+1. **Destructuring**
    
    ```javascript
    const { name, value } = e.target;
@@ -500,6 +504,15 @@ The code you provided contains several core key JavaScript concepts:
    ```javascript
    const name = e.target.name; 
    const value = e.target.value;
+   ```
+   
+   The left-hand side { name, value } is a pattern that matches the structure of the object being destructured (e.target). It tells JavaScript to look for properties named name and value in the object.
+   
+   ```javascript
+      const e = { target: { name: "username", value: "JohnDoe" } };
+   const { name, value } = e.target;
+   console.log(name); // Output: "username"
+   console.log(value); // Output: "JohnDoe"
    ```
 
 2. **Spread operator (...)**
@@ -570,3 +583,27 @@ The code you provided contains several core key JavaScript concepts:
     const square = (x) => (x * x);
     console.log(square(3)); // Output: 9
    ```
+   
+   ### Cheatsheet
+
+| Symbol    | Use Case                  | Example                                                   |
+| --------- | ------------------------- | --------------------------------------------------------- |
+| `{}`      | Object destructuring      | `const { name, age } = obj;`                              |
+| `[]`      | Array destructuring       | `const [first, second] = arr;`                            |
+| `()`      | Function parameters       | `const func = ({ name }) => console.log(name);`           |
+| No Symbol | Invalid for destructuring | `const name, age = obj;` (This will throw a syntax error) |
+
+| Syntax Element         | `x => x * x`                      | `(x) => (x * x)`             |
+| ---------------------- | --------------------------------- | ---------------------------- |
+| Parameter Parentheses  | Omitted (valid for single params) | Explicitly included          |
+| Expression Parentheses | Not used                          | Used for grouping (optional) |
+| Return Behavior        | Implicit return                   | Implicit return              |
+
+
+
+| Feature     | Implicit Return                             | Explicit Return                             |
+| ----------- | ------------------------------------------- | ------------------------------------------- |
+| Syntax      | No `return` keyword or curly braces needed. | Requires `return` keyword and curly braces. |
+| Use Case    | Simple one-liner expressions.               | More complex logic or multiline functions.  |
+| Example     | `const square = x => x * x;`                | `const square = x => { return x * x; };`    |
+| Readability | Concise and clean for short code.           | Better for clarity in complex logic.        |
