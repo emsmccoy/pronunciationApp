@@ -531,10 +531,10 @@ The code you provided contains several core key JavaScript concepts:
       [name]: value, // Update the new state
     };
    ```
+
+3. **Computed property name**
    
-   3. **Computed property name**
-      
-       This syntax allows using the value of 'name' as the property name, dynamically updating the correct form field
+      This syntax allows using the value of 'name' as the property name, dynamically updating the correct form field
    
    ```javascript
       const prevData = { firstName: "John", lastName: "Smith" }; // Initial state
@@ -550,16 +550,16 @@ The code you provided contains several core key JavaScript concepts:
    // Output: { firstName: "John", lastName: "Doe" }
    ```
 
-3. **Combining or Overwriting Properties**
+4. **Combining or Overwriting Properties**
    You can combine or overwrite properties when creating a new object. If multiple objects are spread, properties from later objects overwrite those from earlier ones
    
    ```javascript
-   const updatedData = { ...prevData, lastName: "Doe" };
+      const updatedData = { ...prevData, lastName: "Doe" };
    console.log(updatedData);
    // Output: { firstName: "John", lastName: "Doe" }
    ```
 
-4. **Literal Object: Curly Braces {}**
+5. **Literal Object: Curly Braces {}**
     Curly braces are required because they define an object literal in JavaScript. Without them, the spread operator would not work correctly for objects.
    
    ```javascript
@@ -572,7 +572,7 @@ The code you provided contains several core key JavaScript concepts:
      // Output: { firstName: "John", lastName: "Smith" }
    ```
 
-5. **Implicit Return vs. Non-Implicit (Explicit) Return in JavaScript**
+6. **Implicit Return vs. Non-Implicit (Explicit) Return in JavaScript**
     An implicit return occurs when a function automatically returns the result of a single expression without requiring the return keyword. This is possible with arrow functions in JavaScript. Implicit returns make code more concise and are often used for simple, one-liner functions.
    
    ```javascript
@@ -583,7 +583,7 @@ The code you provided contains several core key JavaScript concepts:
      console.log(add(2, 3)); // Output: 5
    ```
 
-6. **Syntax Element Parentheses**
+7. **Syntax Element Parentheses**
    Parentheses around parameters are required in some cases (e.g., multiple parameters), while parentheses around expressions are purely optional for grouping or readability purposes
    
    ```javascript
