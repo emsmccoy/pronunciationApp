@@ -509,7 +509,7 @@ The code you provided contains several core key JavaScript concepts:
    The left-hand side { name, value } is a pattern that matches the structure of the object being destructured (e.target). It tells JavaScript to look for properties named name and value in the object.
    
    ```javascript
-      const e = { target: { name: "username", value: "JohnDoe" } };
+   const e = { target: { name: "username", value: "JohnDoe" } };
    const { name, value } = e.target;
    console.log(name); // Output: "username"
    console.log(value); // Output: "JohnDoe"
@@ -522,25 +522,35 @@ The code you provided contains several core key JavaScript concepts:
    ```
    
    The spread operator is used to create a copy of all the properties from the prevData object. It's used here to maintain all the existing form data while updating only the changed field.
-
-3. **Computed property name**
-   This syntax allows using the value of 'name' as the property name, dynamically updating the correct form field
    
    ```javascript
     const prevData = { firstName: "John", lastName: "Smith" }; // Initial state
-    const name = "lastName"; // The property we want to update
-    const value = "Doe"; // The new value for the property
    
     const newData = {
-      ...prevData, // Spread all existing properties
-      [name]: value, // Update the 'lastName' property
+      ...prevData, // Spread all existing properties:  firstName: "John", lastName: "Smith"
+      [name]: value, // Update the new state
     };
+   ```
    
-    console.log(newData); 
-    // Output: { firstName: "John", lastName: "Doe" }
+   3. **Computed property name**
+      
+       This syntax allows using the value of 'name' as the property name, dynamically updating the correct form field
+   
+   ```javascript
+      const prevData = { firstName: "John", lastName: "Smith" }; // Initial state
+   const name = "lastName"; // The property we want to update
+   const value = "Doe"; // The new value for the property
+   
+   const newData = {
+     ...prevData, // Spread all existing properties
+     [name]: value, // Update the 'lastName' property
+   };
+   
+   console.log(newData); 
+   // Output: { firstName: "John", lastName: "Doe" }
    ```
 
-4. **Combining or Overwriting Properties**
+3. **Combining or Overwriting Properties**
    You can combine or overwrite properties when creating a new object. If multiple objects are spread, properties from later objects overwrite those from earlier ones
    
    ```javascript
@@ -549,7 +559,7 @@ The code you provided contains several core key JavaScript concepts:
    // Output: { firstName: "John", lastName: "Doe" }
    ```
 
-5. **Literal Object: Curly Braces {}**
+4. **Literal Object: Curly Braces {}**
     Curly braces are required because they define an object literal in JavaScript. Without them, the spread operator would not work correctly for objects.
    
    ```javascript
@@ -562,7 +572,7 @@ The code you provided contains several core key JavaScript concepts:
      // Output: { firstName: "John", lastName: "Smith" }
    ```
 
-6. **Implicit Return vs. Non-Implicit (Explicit) Return in JavaScript**
+5. **Implicit Return vs. Non-Implicit (Explicit) Return in JavaScript**
     An implicit return occurs when a function automatically returns the result of a single expression without requiring the return keyword. This is possible with arrow functions in JavaScript. Implicit returns make code more concise and are often used for simple, one-liner functions.
    
    ```javascript
@@ -573,7 +583,7 @@ The code you provided contains several core key JavaScript concepts:
      console.log(add(2, 3)); // Output: 5
    ```
 
-7. **Syntax Element Parentheses**
+6. **Syntax Element Parentheses**
    Parentheses around parameters are required in some cases (e.g., multiple parameters), while parentheses around expressions are purely optional for grouping or readability purposes
    
    ```javascript
@@ -585,25 +595,23 @@ The code you provided contains several core key JavaScript concepts:
    ```
    
    ### Cheatsheet
-
-| Symbol    | Use Case                  | Example                                                   |
-| --------- | ------------------------- | --------------------------------------------------------- |
-| `{}`      | Object destructuring      | `const { name, age } = obj;`                              |
-| `[]`      | Array destructuring       | `const [first, second] = arr;`                            |
-| `()`      | Function parameters       | `const func = ({ name }) => console.log(name);`           |
-| No Symbol | Invalid for destructuring | `const name, age = obj;` (This will throw a syntax error) |
-
-| Syntax Element         | `x => x * x`                      | `(x) => (x * x)`             |
-| ---------------------- | --------------------------------- | ---------------------------- |
-| Parameter Parentheses  | Omitted (valid for single params) | Explicitly included          |
-| Expression Parentheses | Not used                          | Used for grouping (optional) |
-| Return Behavior        | Implicit return                   | Implicit return              |
-
-
-
-| Feature     | Implicit Return                             | Explicit Return                             |
-| ----------- | ------------------------------------------- | ------------------------------------------- |
-| Syntax      | No `return` keyword or curly braces needed. | Requires `return` keyword and curly braces. |
-| Use Case    | Simple one-liner expressions.               | More complex logic or multiline functions.  |
-| Example     | `const square = x => x * x;`                | `const square = x => { return x * x; };`    |
-| Readability | Concise and clean for short code.           | Better for clarity in complex logic.        |
+   
+   | Symbol    | Use Case                  | Example                                                   |
+   | --------- | ------------------------- | --------------------------------------------------------- |
+   | `{}`      | Object destructuring      | `const { name, age } = obj;`                              |
+   | `[]`      | Array destructuring       | `const [first, second] = arr;`                            |
+   | `()`      | Function parameters       | `const func = ({ name }) => console.log(name);`           |
+   | No Symbol | Invalid for destructuring | `const name, age = obj;` (This will throw a syntax error) |
+   
+   | Syntax Element         | `x => x * x`                      | `(x) => (x * x)`             |
+   | ---------------------- | --------------------------------- | ---------------------------- |
+   | Parameter Parentheses  | Omitted (valid for single params) | Explicitly included          |
+   | Expression Parentheses | Not used                          | Used for grouping (optional) |
+   | Return Behavior        | Implicit return                   | Implicit return              |
+   
+   | Feature     | Implicit Return                             | Explicit Return                             |
+   | ----------- | ------------------------------------------- | ------------------------------------------- |
+   | Syntax      | No `return` keyword or curly braces needed. | Requires `return` keyword and curly braces. |
+   | Use Case    | Simple one-liner expressions.               | More complex logic or multiline functions.  |
+   | Example     | `const square = x => x * x;`                | `const square = x => { return x * x; };`    |
+   | Readability | Concise and clean for short code.           | Better for clarity in complex logic.        |
