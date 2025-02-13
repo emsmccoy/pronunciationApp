@@ -1,6 +1,7 @@
 package dev.pronunciationAppBack.controller;
 
 
+import dev.pronunciationAppBack.service.UserService;
 import dev.pronunciationAppBack.service.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -21,12 +22,16 @@ public class HealthController {
     @Autowired
     private WordService wordService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping
     public ResponseEntity<Map<String, Object>> healthCheck() {
         Map<String, Object> healthStatus = new HashMap<>();
         healthStatus.put("status", "UP");
         healthStatus.put("timestamp", new Date());
         healthStatus.put("wordCount", wordService.getWordCount());
+        healthStatus.put("userCount", userService.getUserCount());
 
         // verify database connection
         boolean databaseConnection = checkDatabaseConnection();
