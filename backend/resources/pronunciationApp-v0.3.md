@@ -61,9 +61,9 @@ private Word word;
 - `fetch = FetchType.LAZY` improves performance by loading related entities only when accessed.
 - `nullable = false` ensures that every Pronunciation must be associated with a Word.
 
-## Test JUnit
+### Test JUnit
 
-### With @SpringBootTest
+#### With @SpringBootTest
 
 Test Class Overview:
 
@@ -134,7 +134,7 @@ public class PronunciationTest {
 }
 ```
 
-### With @DataJpaTest
+#### With @DataJpaTest
 
 Our test case is a good start, but there are a few improvements we can make:
 
