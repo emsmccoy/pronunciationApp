@@ -1,6 +1,6 @@
 # PronunciationApp Backend v0.3
 
-# JPA
+## JPA References
 
 - [Spring Boot: Data &amp; DB – albertprofe wiki](https://albertprofe.dev/springboot/boot-concepts-data.html)
 
@@ -61,9 +61,9 @@ private Word word;
 - `fetch = FetchType.LAZY` improves performance by loading related entities only when accessed.
 - `nullable = false` ensures that every Pronunciation must be associated with a Word.
 
-## Test Analysis
+## Test JUnit
 
-#### With @SpringBootTest
+### With @SpringBootTest
 
 Test Class Overview:
 
@@ -92,8 +92,6 @@ Test Class Overview:
 - Create a `Word` object if it doesn't exist to ensure test consistency.
 - Use `@DataJpaTest` for more focused repository testing.
 - Add error handling for cases where the `Word` is not found.
-
-
 
 ```java
 @SpringBootTest
@@ -134,7 +132,6 @@ public class PronunciationTest {
 
     }
 }
-
 ```
 
 ### With @DataJpaTest
@@ -226,8 +223,6 @@ Example Postman requests:
 #### Our example
 
 ```json
-
-
 {
   "id": "8f7d1b9e3a2c5f6e",
   "wordName": "aberration",
@@ -249,5 +244,4 @@ Example Postman requests:
     }
   ],
   "active": true
-
 ```
