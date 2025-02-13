@@ -23,3 +23,7 @@ JPA stands for `Java Persistence API`.
 It is a Java specification for **managing, persisting, and accessing relational data** in Java applications.
 
 JPA is a **standard API for ORM (Object-Relational Mapping)** and provides a way to map Java objects to relational databases
+
+
+
+## Word 1:n Pronunciation
