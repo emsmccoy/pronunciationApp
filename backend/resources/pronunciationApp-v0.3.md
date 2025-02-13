@@ -26,6 +26,41 @@ JPA is a **standard API for ORM (Object-Relational Mapping)** and provides a way
 
 ## Word 1:n Pronunciation
 
+```java
+@Entity
+public class Word {
+    @Id
+    private String id;
+    private String wordName;
+    private String definition;
+    private String phoneticSpelling;
+    private String sentence;
+    private boolean isActive;
+    private int level;
+}
+
+
+// ..
+@Entity
+public class Pronunciation {
+    @Id
+    private String id;
+    private String audioDescription;
+    private long audioDuration;
+    private long audioSize;
+    private String audioUrl;
+    private String definition;
+    private String phoneticSpelling;
+    private String speakerGender;
+    public enum type {
+        RECORDED, SAMPLE
+    }
+    private type type;
+}
+```
+
+
+
 **Step 1: Define the Relationship**
 
 > We must to identify the relationship as One-to-Many: one Word can have multiple Pronunciations, and each Pronunciation belongs to a unique Word.
@@ -60,6 +95,49 @@ private Word word;
 - `cascade = CascadeType.ALL` ensures that operations on Word are cascaded to associated Pronunciations.
 - `fetch = FetchType.LAZY` improves performance by loading related entities only when accessed.
 - `nullable = false` ensures that every Pronunciation must be associated with a Word.
+
+```java
+```java
+@Entity
+public class Word {
+    @Id
+    private String id;
+    private String wordName;
+    private String definition;
+    private String phoneticSpelling;
+    private String sentence;
+    private boolean isActive;
+    private int level;
+
+    @OneToMany(mappedBy = "word")
+    private List<Pronunciation> pronunciations;
+}
+
+
+// ..
+@Entity
+public class Pronunciation {
+    @Id
+    private String id;
+    private String audioDescription;
+    private long audioDuration;
+    private long audioSize;
+    private String audioUrl;
+    private String definition;
+    private String phoneticSpelling;
+    private String speakerGender;
+    public enum type {
+        RECORDED, SAMPLE
+    }
+    private type type;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "WORD_ID_FK")
+    private Word word;
+}
+```
+```
 
 ### Test JUnit
 
