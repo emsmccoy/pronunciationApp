@@ -59,8 +59,6 @@ public class Pronunciation {
 }
 ```
 
-
-
 **Step 1: Define the Relationship**
 
 > We must to identify the relationship as One-to-Many: one Word can have multiple Pronunciations, and each Pronunciation belongs to a unique Word.
@@ -97,7 +95,6 @@ private Word word;
 - `nullable = false` ensures that every Pronunciation must be associated with a Word.
 
 ```java
-```java
 @Entity
 public class Word {
     @Id
@@ -112,7 +109,6 @@ public class Word {
     @OneToMany(mappedBy = "word")
     private List<Pronunciation> pronunciations;
 }
-
 
 // ..
 @Entity
@@ -136,7 +132,6 @@ public class Pronunciation {
     @JoinColumn(name = "WORD_ID_FK")
     private Word word;
 }
-```
 ```
 
 ### Test JUnit
