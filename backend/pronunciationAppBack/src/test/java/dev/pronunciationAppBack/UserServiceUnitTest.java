@@ -1,6 +1,6 @@
 package dev.pronunciationAppBack;
 
-import com.github.javafaker.Faker;
+import net.datafaker.Faker;
 import dev.pronunciationAppBack.model.User;
 import dev.pronunciationAppBack.repository.UserRepository;
 import dev.pronunciationAppBack.service.UserService;

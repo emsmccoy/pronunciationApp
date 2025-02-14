@@ -1,6 +1,6 @@
 package dev.pronunciationAppBack.utilities;
 
-import com.github.javafaker.Faker;
+import net.datafaker.Faker;
 import dev.pronunciationAppBack.model.User;
 import dev.pronunciationAppBack.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -52,8 +52,7 @@ public class DataInitializer implements CommandLineRunner {
                             faker.name().username(),
                             faker.internet().emailAddress(),
                             faker.internet().password(),
-                            faker.date().birthday().toInstant()
-                                    .atZone(ZoneId.systemDefault()).toLocalDateTime(),
+                            faker.timeAndDate().birthday().atStartOfDay(),
                             faker.bool().bool()
                     ))
                     .collect(Collectors.toList()); //collects objects to list

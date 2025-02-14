@@ -8,9 +8,7 @@ import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
-//@Data // combines @Getter, @Setter, @ToString, @EqualsAndHashCode, and @RequiredArgsConstructor into a single annotation.
-@Setter
-@Getter
+@Data // combines @Getter, @Setter, @ToString, @EqualsAndHashCode, and @RequiredArgsConstructor into a single annotation.
 @Entity
 @Table(name = "`USER`")
 public class User {
@@ -53,10 +51,5 @@ public class User {
                 ", isActive=" + isActive +
                 '}';
     }
-
-    public String getId() {
-        return id;
-    }
-
 
 }
