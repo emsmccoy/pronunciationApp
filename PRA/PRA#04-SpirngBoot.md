@@ -1,6 +1,6 @@
 # PRA#04-SpringBoot: JPA Relationships and Model Enhancement
 
-## CIFO La Violeta - FullStack IFCD0210-25 MF01
+## CIFO La Violeta - FullStack IFCD0210-25 MF02
 
 In this practical exercise, you will enhance the **Spring Boot application from PRA#02**, focusing on implementing JPA relationships and improving the data model for the Pronunciation App.
 
@@ -141,7 +141,6 @@ public class GameProgress {
 
     // Other fields and methods
 }
-
 ```
 
 ## Many-to-Many Relationship Example
@@ -175,7 +174,6 @@ public class Category {
 
     // Other fields and methods
 }
-
 ```
 
 ## Optional Enhancements
