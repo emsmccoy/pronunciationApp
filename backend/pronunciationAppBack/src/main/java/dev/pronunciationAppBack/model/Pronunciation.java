@@ -21,6 +21,7 @@ public class Pronunciation {
     private long audioSize;
     private String audioUrl;
     private String phoneticSpelling;
+    private String definition;
     private String speakerGender;
     public enum type {
         RECORDED, SAMPLE
