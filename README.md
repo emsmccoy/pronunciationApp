@@ -1,34 +1,116 @@
-# PRA#02-SpringBoot: Create User API Rest
+# PRA#04-SpringBoot: JPA Relationships and Model Enhancement
 
-## CIFO La Violeta - FullStack IFCD0210-25 MF01
+## Overview
 
-This document serves as a guide and log for the backend development of the PRA#02 Spring Boot project.
+This document serves as a guide and log for the frontend development of the PRA#04-SpringBoot project.
 
 ---
 
+## # PRA#04-SpringBoot: JPA Relationships and Model Enhancement
+
+## Overview
+
+This practical exercise focuses on implementing JPA relationships and enhancing the data model for a Spring Boot pronunciation application.
+
+---
+
+## UML Model
+
+```mermaid
+classDiagram
+    class User {
+        +String id
+        +String usrname
+        +int age
+        +String email
+        +int totalScore
+        +boolean isActive
+    }
+    class Word {
+        +String id
+        +String text
+        +String description
+        +String sentence
+        +int difficulty
+        +boolean isCommon
+    }
+    class Pronunciation {
+        +String id
+        +String audioName
+        +int audioSize
+        +String audioUrl
+        +String phoneticSpelling
+        +String speakerGender
+        +enum type  // canonical, recorded 
+    }
+    class Level {
+        +String id
+        +int number
+        +String name
+        +int requiredScore
+        +boolean isBlocked
+    }
+    class Category {
+        +String id
+        +String categoryName
+        +String subCategoryName
+        +String description
+        +int wordCount
+    }
+    class GameProgress {
+        +String id
+        +int currentScore
+        +enum currentStage  // stage_01, stage_02 
+        +Date lastPlayedDate
+        +int wordsLearned
+    }
+    class Stage {
+        +String id
+        +String name
+        +String avatarUrl
+        +String status
+        +int progress
+        +int currentScore
+    }
+    class StageWord {
+        +String id
+        +enum status  // done, pending, fail 
+        +Date lastUpdatedDateTime
+    }
+
+
+    User "1" -- "1" GameProgress : tracks progress
+    Word "1" -- "*" Pronunciation : has pronunciation
+    Word "*" -- "*" Category : belongs to multiple
+    Word "*" -- "1" Level : has level
+    GameProgress "1" -- "*" Stage : is at stage
+    Stage "*" -- "1" Level : has level
+    Stage "1" -- "*" StageWord : has tracked words
+    Word "1" -- "*" StageWord : has stageword
+```
+
 ## PR Submission Checklist
 
-### **Common Tasks:**
+### **Completed Tasks**:
 
-- [x] Create User @Entity
-- [x] Create UserController (Rest API controller)
-- [x] Implement UserRepository
-- [x] Configure application properties with local H2 database
-- [x] Develop UserService
-- [x] Test all endpoints with Postman
-
-### Optional Tasks:
-
-- [x] Configure Postgres database
-- [x] Implement Faker for test data
-- [x] Add unit tests for services
-- [x] Integration tests for controllers
+- [ ]  Review and Improve Model v0.2
+- [ ]  Implement One-to-One: UserApp and GameProgress  
+- [ ]  Create Many-to-Many: Word and Category
+- [ ]  Implement One-to-Many/Many-to-One Relationships
+- [ ]  Configure JPA Annotations
+- [ ]  Create Repository Interfaces
+- [ ]  Implement Basic Service Methods
+- [ ]  Test Relationships
+- [ ]  Data Auditing
+- [ ]  Advanced Validation
+- [ ]  Pagination and Sorting Support
+- [ ]  Custom Query Optimization
 
 ### **Testing**:
 
-- [x] All endpoints tested in Postman.
-- [x] Error handling implemented in controllers.
-- [x] Data persistence verified in H2 database.
+- [ ] Relationship integrity tests
+- [ ] Cascade operation tests
+- [ ] Fetch strategy validation
 
 ---
 
@@ -36,60 +118,60 @@ This document serves as a guide and log for the backend development of the PRA#0
 
 ### Common Part
 
-| Task                        | Estimated Time | Actual Time    | Impediments (if any)                                                      | New Concepts                                                                                                 |
-| --------------------------- | -------------- | -------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| Create User @Entity         | 1 hours        | 45 min         |                                                                           | @PrePersist<br/>@GeneratedValue(strategy = GenerationType.UUID)<br/>@Column(unique = true, nullable = false) |
-| Create UserController       | 1 hours        | 1.5 hour       |                                                                           | ResponseEntity utility methods <br/> Centralize headers handling using helper method                         |
-| Implement UserRepository    | 0.5 hours      | 0.5 hours      |                                                                           |                                                                                                              |
-| Configure H2 database       | 0.5 hours      | 0.5 hours      |                                                                           |                                                                                                              |
-| Develop UserService         | 2 hours        | 1 hours        |                                                                           |                                                                                                              |
-| Test endpoints with Postman | 1.5 hours      | 2 hours        | data.sql only executes correctly if the table has been created previously | data.sql to introduce mock data <br/>postman data file to test and run collections                           |
-| **Total**                   | **6.5 hours**  | **6.25 hours** |                                                                           |                                                                                                              |
+| Task                                   | Estimated Time | Actual Time | Impediments | New Concepts             |
+| -------------------------------------- | -------------- | ----------- | ----------- | ------------------------ |
+| Model Review                           | 15 min         | 10 min      |             | JPA mapping              |
+| One-to-One (User-App and GameProgress) | 15 min         |             |             | Bidirectional mapping    |
+| Many-to-Many (Word - Category)         | 15 min         |             |             | Join Table configuration |
+| One-to-Many & Many-to-One              | 1:30 hours     |             |             |                          |
+| Relationship Configuration             | 1 hour         |             |             | Cascade types            |
+| Repository Creation                    | 10 min         |             |             | Spring Data JPA          |
+| Service Implementation                 | 1 hour         |             |             | Service layer patterns   |
+| Testing                                | 2 hours        |             |             | Data integrity checks    |
+| **Total**                              | **6:30 hours** |             |             |                          |
 
 ### Optional Part
 
-| Task                              | Estimated Time | Actual Time   | Impediments (if any) | New Concepts                                                                                                                        |
-| --------------------------------- | -------------- | ------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| Configure Postgres database       | 2.5 hours      | 2.5 hours     |                      |                                                                                                                                     |
-| Implement Faker for test data     | 1 hours        | 1.5 hours     |                      | Use Faker dinamically via API (not implemented) <br/> Streams: IntStream.range(x, y).mapToObj(i -> ...).collect(Collectors.toList() |
-| Add unit tests for services       | 2 hours        | 1.5 hours     |                      | Mockito JUnit integration                                                                                                           |
-| Integration tests for controllers | 2 hours        | 1 hour so far |                      | MockMvc and Fluent API                                                                                                              |
-| **Total**                         | **7.5 hours**  | **6.5 hours** |                      |                                                                                                                                     |
+| Task                   | Estimated Time | Actual Time | Impediments | New Concepts        |
+| ---------------------- | -------------- | ----------- | ----------- | ------------------- |
+| Data Auditing          | 1 hours        |             |             | JPA Auditing        |
+| Advanced Validation    | 1:20 hours     |             |             | Bean Validation     |
+| Pagination and sorting | 2 hours        |             |             | Pageable interface  |
+| Custom Queries         | 1 hour         |             |             | JPQL/Native queries |
+| **Total**              | **5:20 hours** |             |             |                     |
 
 ---
 
-## Images
+## Error Documentation and Solutions
 
-### <u>H2</u>
+### Error: `[ERROR_MESSAGE]`
 
-#### Database Connection
+**Corresponding Task:** [RELATED_TASK]
 
-![](./PRA/PRA02-H2.png)
+**Description:** [ERROR_DESCRIPTION]
 
-#### Postman Runner Results
+**Error Trace:**
 
-![](./PRA/PRA02-PostmanRunner.png)
+- **Component:** [COMPONENT_NAME]
+- **File:** [FILE_NAME]
+- **Line:** [ERROR_LINE]
+- **Stack Trace:**
+  - [ERROR_TRACE]
 
-### <u>Postgres</u>
+**Possible Causes:**
 
-#### Database Connection (pgAdmin 4 & terminal)
+- [POTENTIAL_CAUSES]
 
-![](./PRA/PRA02-pgAdmin4.png)
+**Solution:**
 
-![](/./PRA/PRA02-PostgresTerminal.png)
+```jsx
+// Fixed code or solution
+```
 
-#### Postman Runner Results
-
-![](./PRA/PRA02-PostmanRunner-Postgres.png)
+**Explanation:** [EXPLANATION_OF_THE_SOLUTION]
 
 ---
 
 ## Future Improvements
 
-- <mark>Implement Global Exception Handling.</mark>
-- Add more unit and integration tests for key functionalities.
-- Implement custom queries for enhanced user search.
-- Optimize service layer for better performance and maintainability.
-- Enhance validation for user input fields.
-
----
+- **Caching Mechanism** - Add Hibernate second-level cache configuration
