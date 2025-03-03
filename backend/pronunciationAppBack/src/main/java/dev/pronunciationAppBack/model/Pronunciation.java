@@ -20,7 +20,6 @@ public class Pronunciation {
     private long audioDuration;
     private long audioSize;
     private String audioUrl;
-    private String definition;
     private String phoneticSpelling;
     private String speakerGender;
     public enum type {
@@ -32,7 +31,5 @@ public class Pronunciation {
     @ManyToOne
     @JoinColumn(name = "WORD_ID_FK")
     private Word word;
-
-
 
 }

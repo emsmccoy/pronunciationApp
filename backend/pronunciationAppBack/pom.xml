@@ -12,7 +12,7 @@
 	<artifactId>pronunciationAppBack</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>pronunciationAppBack</name>
-	<description>Spring Boot for app pronunciatoin</description>
+	<description>Spring Boot for app pronunciation</description>
 	<url/>
 	<licenses>
 		<license/>
