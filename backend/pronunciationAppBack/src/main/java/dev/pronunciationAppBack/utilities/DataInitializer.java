@@ -1,13 +1,11 @@
 package dev.pronunciationAppBack.utilities;
 
 import net.datafaker.Faker;
-import dev.pronunciationAppBack.model.User;
-import dev.pronunciationAppBack.repository.UserRepository;
+import dev.pronunciationAppBack.model.UserApp;
+import dev.pronunciationAppBack.repository.UserAppRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,10 +13,10 @@ import java.util.stream.IntStream;
 @Component // This ensures it runs at startup
 public class DataInitializer implements CommandLineRunner {
 
-    private final UserRepository userRepository;
+    private final UserAppRepository userRepository;
     private final Faker faker = new Faker();
 
-    public DataInitializer(UserRepository userRepository) {
+    public DataInitializer(UserAppRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -46,14 +44,15 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) {
         if (userRepository.count() == 0) { // Prevent duplicate inserts
-            List<User> users = IntStream.range(0, 10) //create an int stream
-                    .mapToObj(i -> new User( //transforms int into object
+            List<UserApp> users = IntStream.range(0, 10) //create an int stream
+                    .mapToObj(i -> new UserApp( //transforms int into object
                             faker.internet().uuid(),  // Explicit UUID
                             faker.name().username(),
                             faker.internet().emailAddress(),
                             faker.internet().password(),
                             faker.timeAndDate().birthday().atStartOfDay(),
-                            faker.bool().bool()
+                            faker.bool().bool(),
+                            null
                     ))
                     .collect(Collectors.toList()); //collects objects to list
 
