@@ -2,15 +2,7 @@
 
 ## Overview
 
-This document serves as a guide and log for the frontend development of the PRA#04-SpringBoot project.
-
----
-
-## # PRA#04-SpringBoot: JPA Relationships and Model Enhancement
-
-## Overview
-
-This practical exercise focuses on implementing JPA relationships and enhancing the data model for a Spring Boot pronunciation application.
+This document serves as a guide and log for the frontend development of the PRA#04-SpringBoot project. The exercise focuses on implementing JPA relationships and enhancing the data model for a Spring Boot pronunciation application.
 
 ---
 
@@ -93,7 +85,7 @@ classDiagram
 
 ### **Completed Tasks**:
 
-- [ ]  Review and Improve Model v0.2
+- [x]  Review and Improve Model v0.2
 - [ ]  Implement One-to-One: UserApp and GameProgress  
 - [ ]  Create Many-to-Many: Word and Category
 - [ ]  Implement One-to-Many/Many-to-One Relationships
