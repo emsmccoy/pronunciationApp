@@ -1,8 +1,8 @@
 package dev.pronunciationAppBack;
 
 import net.datafaker.Faker;
-import dev.pronunciationAppBack.model.User;
-import dev.pronunciationAppBack.repository.UserRepository;
+import dev.pronunciationAppBack.model.UserApp;
+import dev.pronunciationAppBack.repository.UserAppRepository;
 import dev.pronunciationAppBack.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,34 +24,35 @@ import static org.mockito.Mockito.*;
 class UserServiceUnitTest {
 
     @Mock
-    private UserRepository userRepository;
+    private UserAppRepository userRepository;
 
     @InjectMocks
     private UserService userService;
 
-    private List<User> mockUsers;
+    private List<UserApp> mockUsers;
     private Faker faker = new Faker();
 
     @BeforeEach
     void setUp() {
         mockUsers = IntStream.range(0, 10)
-                .mapToObj(i -> new User(
+                .mapToObj(i -> new UserApp(
                         String.valueOf(i + 1), // ID as String
                         faker.name().username(),
                         faker.internet().emailAddress(),
                         faker.internet().password(),
                         LocalDateTime.now(),
-                        faker.bool().bool()
+                        faker.bool().bool(),
+                        null
                 ))
                 .collect(Collectors.toList());
     }
 
     @Test
     void testCreateUser() {
-        User user = mockUsers.get(0);
-        when(userRepository.save(any(User.class))).thenReturn(user);
+        UserApp user = mockUsers.get(0);
+        when(userRepository.save(any(UserApp.class))).thenReturn(user);
 
-        User createdUser = userService.createUser(user);
+        UserApp createdUser = userService.createUser(user);
 
         assertNotNull(createdUser); // user is not empty
         assertEquals(user.getUsername(), createdUser.getUsername()); //they have the same username
@@ -62,7 +63,7 @@ class UserServiceUnitTest {
     void testGetAllUsers() {
         when(userRepository.findAll()).thenReturn(mockUsers);
 
-        List<User> retrievedUsers = userService.getAllUsers();
+        List<UserApp> retrievedUsers = userService.getAllUsers();
 
         assertFalse(retrievedUsers.isEmpty()); //list is not empty
         assertEquals(mockUsers.size(), retrievedUsers.size()); //size of lists is the same
@@ -71,10 +72,10 @@ class UserServiceUnitTest {
 
     @Test
     void testGetUserById() {
-        User user = mockUsers.get(0);
+        UserApp user = mockUsers.get(0);
         when(userRepository.getUserById(user.getId())).thenReturn(user);
 
-        Optional<User> retrievedUser = userService.getUserById(user.getId());
+        Optional<UserApp> retrievedUser = userService.getUserById(user.getId());
 
         assertTrue(retrievedUser.isPresent()); // user exists
         assertEquals(user.getUsername(), retrievedUser.get().getUsername()); // username from mock and service is the same
@@ -83,10 +84,10 @@ class UserServiceUnitTest {
 
     @Test
     void testUpdateUser() {
-        User user = mockUsers.get(0);
-        when(userRepository.save(any(User.class))).thenReturn(user);
+        UserApp user = mockUsers.get(0);
+        when(userRepository.save(any(UserApp.class))).thenReturn(user);
 
-        User updatedUser = userService.updateUser(user);
+        UserApp updatedUser = userService.updateUser(user);
 
         assertNotNull(updatedUser); // user is not null
         assertEquals(user.getUsername(), updatedUser.getUsername()); // username from mock and service are the same

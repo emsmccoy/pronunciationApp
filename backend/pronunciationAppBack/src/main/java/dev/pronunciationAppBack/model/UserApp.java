@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Data // combines @Getter, @Setter, @ToString, @EqualsAndHashCode, and @RequiredArgsConstructor into a single annotation.
 @Entity
 @Table(name = "`USER`")
-public class User {
+public class UserApp {
 
     // @Getter
     // @Setter
@@ -39,6 +39,9 @@ public class User {
     protected void onCreate(){
         joinDate = LocalDateTime.now();
     }
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "GAME_PROGRESS_FK")
+    private GameProgress gameProgress;
 
     @Override
     public String toString() {

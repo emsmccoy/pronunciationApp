@@ -1,8 +1,8 @@
 package dev.pronunciationAppBack;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.pronunciationAppBack.model.User;
-import dev.pronunciationAppBack.repository.UserRepository;
+import dev.pronunciationAppBack.model.UserApp;
+import dev.pronunciationAppBack.repository.UserAppRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,8 +14,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -32,18 +30,18 @@ class UserControllerIntegrationTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserAppRepository userRepository;
 
     @Autowired
     private ObjectMapper objectMapper;
 
-    private User user;
+    private UserApp user;
 
     @BeforeEach
     void setUp() {
         userRepository.deleteAll(); // Clean database before each test
 
-        user = new User();
+        user = new UserApp();
         user.setUsername("testuser");
         user.setEmail("test@example.com");
         user.setPassword("password123");
@@ -68,7 +66,7 @@ class UserControllerIntegrationTest {
 
     @Test
     void testCreateUser() throws Exception {
-        User newUser = new User();
+        UserApp newUser = new UserApp();
         newUser.setUsername("newuser");
         newUser.setEmail("newuser@example.com");
         newUser.setPassword("securePass");

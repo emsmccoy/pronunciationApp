@@ -1,21 +1,19 @@
 package dev.pronunciationAppBack.controller;
 
 import dev.pronunciationAppBack.service.UserService;
-import dev.pronunciationAppBack.model.User;
+import dev.pronunciationAppBack.model.UserApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
-public class UserController {
+public class UserAppController {
 
     @Autowired
     public UserService userService;
@@ -27,8 +25,8 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> users = userService.getAllUsers();
+    public ResponseEntity<List<UserApp>> getAllUsers() {
+        List<UserApp> users = userService.getAllUsers();
 
         return !users.isEmpty()
             ? ResponseEntity.ok().headers(getHeaders("Returning all users")).body(users)
@@ -36,16 +34,16 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable String id) {
-        Optional<User> user = userService.getUserById(id);
+    public ResponseEntity<UserApp> getUserById(@PathVariable String id) {
+        Optional<UserApp> user = userService.getUserById(id);
 
         return user.map(u -> ResponseEntity.ok().headers(getHeaders("User found")).body(u))
                 .orElseGet(() -> ResponseEntity.notFound().headers(getHeaders("User not found")).build());
     }
 
     @PostMapping("/createUser")
-    public ResponseEntity<User> createUser(@RequestBody User user){
-        User createdUser = userService.createUser(user);
+    public ResponseEntity<UserApp> createUser(@RequestBody UserApp user){
+        UserApp createdUser = userService.createUser(user);
 
         //return ResponseEntity.ok().body(createdUser);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
@@ -55,11 +53,11 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User user) {
+    public ResponseEntity<UserApp> updateUser(@PathVariable String id, @RequestBody UserApp user) {
         if (user.getId() != null && !user.getId().equals(id)) {
             return ResponseEntity.badRequest().headers(getHeaders("Mismatch between ID and user ID in body request")).build();
         } else {
-            User updatedUser = userService.updateUser(user);
+            UserApp updatedUser = userService.updateUser(user);
             return ResponseEntity.ok().headers(getHeaders("User updated")).body(updatedUser);
         }
     }
