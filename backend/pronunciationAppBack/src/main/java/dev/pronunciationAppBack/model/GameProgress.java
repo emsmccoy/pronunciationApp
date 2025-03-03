@@ -18,7 +18,11 @@ public class GameProgress {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private  int currentScore;
-    private EnumType currentStage;
+    @Enumerated(EnumType.STRING) //saves the enum name in the database
+    private GameStage currentStage;
     private LocalDateTime lastPlayedDate;
     private int wordsLearned;
+
+    @OneToOne(mappedBy = "gameProgress")
+    private UserApp user;
 }
