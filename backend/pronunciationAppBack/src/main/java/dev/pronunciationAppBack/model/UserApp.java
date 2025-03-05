@@ -10,28 +10,22 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data // combines @Getter, @Setter, @ToString, @EqualsAndHashCode, and @RequiredArgsConstructor into a single annotation.
 @Entity
-@Table(name = "`USER`")
 public class UserApp {
 
     // @Getter
     // @Setter
-    @JsonProperty("id")
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @JsonProperty("username")
     // @Column(unique = true, nullable = false)
     private String username;
 
-    @JsonProperty("email")
     // @Column(unique = true, nullable = false)
     private String email;
 
-    @JsonProperty("password")
     private String password;
 
-    @JsonProperty("joinDate")
     private LocalDateTime joinDate;
     private boolean isActive;
 
