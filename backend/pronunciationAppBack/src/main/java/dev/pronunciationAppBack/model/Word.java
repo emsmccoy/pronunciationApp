@@ -1,7 +1,9 @@
 package dev.pronunciationAppBack.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -29,6 +32,10 @@ public class Word {
 
     @OneToMany(mappedBy = "word")
     private List<Pronunciation> pronunciations;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "words")
+    private Set<Category> categories;
 
     @Override
     public String toString() {
