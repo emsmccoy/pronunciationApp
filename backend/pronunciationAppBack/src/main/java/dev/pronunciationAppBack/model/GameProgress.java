@@ -23,6 +23,6 @@ public class GameProgress {
     private LocalDateTime lastPlayedDate;
     private int wordsLearned;
 
-    @OneToOne(mappedBy = "gameProgress")
+    @OneToOne(mappedBy = "gameProgress", cascade = CascadeType.ALL)
     private UserApp user;
 }

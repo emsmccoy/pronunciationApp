@@ -18,8 +18,8 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ActiveProfiles("test")
-@DataJpaTest
+//@ActiveProfiles("test")
+@SpringBootTest
 public class OneToOne_GameProgressUserApp {
 
     @Autowired
@@ -47,6 +47,10 @@ public class OneToOne_GameProgressUserApp {
         user.setPassword("securepassword");
         user.setActive(true);
         user.setGameProgress(gameProgress);
+
+        //Add user in gameProgress
+
+        gameProgress.setUser(user);
 
         //Persist UserApp (cascade ALL allows GameProgress to be saved automatically)
         userAppRepository.save(user);
