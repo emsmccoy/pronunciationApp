@@ -46,8 +46,8 @@ public class StageWordService {
         return stageWordRepository.count();
     }
 
-    // Additional business logic can be added here
-    public List<StageWord> getStageWordsByStatus(StageWord.Status status) {
-        return stageWordRepository.findByStatus(status);
-    }
+//    // Additional business logic can be added here
+//    public List<StageWord> getStageWordsByStatus(StageWord.Status status) {
+//        return stageWordRepository.findByStatus(status);
+//    }
 }

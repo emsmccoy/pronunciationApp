@@ -1,23 +1,15 @@
 package dev.pronunciationAppBack.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
 
-import jakarta.persistence.Id;
 import java.util.Date;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+
 public class StageWord {
 
     @Id
@@ -27,7 +19,8 @@ public class StageWord {
     private int listenedQty;
     private Date lastUpdatedDateTime;
 
-    public enum Status {
-        DONE, PENDING, FAIL
-    }
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "WORD_ID")
+    private Word word;
+
 }

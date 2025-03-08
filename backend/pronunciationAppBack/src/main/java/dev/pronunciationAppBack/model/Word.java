@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -35,7 +36,7 @@ public class Word {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "words")
-    private Set<Category> categories;
+    private Set<Category> categories = new HashSet<>();
 
     @Override
     public String toString() {

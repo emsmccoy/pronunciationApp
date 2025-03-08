@@ -86,16 +86,34 @@ classDiagram
 ### **Completed Tasks**:
 
 - [x] Review and Improve Model v0.2
-- [ ] Implement One-to-One: UserApp and GameProgress  
-- [ ] Create Many-to-Many: Word and Category
+
+- [x] Implement One-to-One: UserApp and GameProgress  
+
+- [x] Create Many-to-Many: Word and Category
+
 - [ ] Implement One-to-Many/Many-to-One Relationships
+  
+  [x] Word "1" -- "m" Pronunciation
+  [x] Word "1" -- "m" StageWord
+  Stage "1" -- "m" StageWord
+  Word "m" -- "1" Level 
+  GameProgress "1" -- "m" Stage
+  Stage "m" -- "1" Level
+
 - [ ] Configure JPA Annotations
+
 - [ ] Create Repository Interfaces
+
 - [ ] Implement Basic Service Methods
+
 - [ ] Test Relationships
+
 - [ ] Data Auditing
+
 - [ ] Advanced Validation
+
 - [ ] Pagination and Sorting Support
+
 - [ ] Custom Query Optimization
 
 ### **Testing**:
@@ -110,17 +128,17 @@ classDiagram
 
 ### Common Part
 
-| Task                                   | Estimated Time | Actual Time | Impediments | New Concepts                   |
-| -------------------------------------- | -------------- | ----------- | ----------- | ------------------------------ |
-| Model Review                           | 15 min         | 10 min      |             | JPA mapping                    |
-| One-to-One (User-App and GameProgress) | 15 min         | 30 min      |             | Enums (@Enumerated annotation) |
-| Many-to-Many (Word - Category)         | 15 min         |             |             | Join Table configuration       |
-| One-to-Many & Many-to-One              | 1:30 hours     |             |             |                                |
-| Relationship Configuration             | 1 hour         |             |             | Cascade types                  |
-| Repository Creation                    | 10 min         |             |             | Spring Data JPA                |
-| Service Implementation                 | 1 hour         |             |             | Service layer patterns         |
-| Testing                                | 2 hours        | 1 hour      |             | @ActiveProfiles                |
-| **Total**                              | **6:30 hours** |             |             |                                |
+| Task                                   | Estimated Time | Actual Time | Impediments | New Concepts                    |
+| -------------------------------------- | -------------- | ----------- | ----------- | ------------------------------- |
+| Model Review                           | 15 min         | 10 min      |             | JPA mapping                     |
+| One-to-One (User-App and GameProgress) | 15 min         | 30 min      |             | Enums (@Enumerated annotation)  |
+| Many-to-Many (Word - Category)         | 15 min         | 30 min      |             | Join Table configuration        |
+| One-to-Many & Many-to-One              | 1:30 hours     |             |             |                                 |
+| Relationship Configuration             | 1 hour         |             |             | Cascade types                   |
+| Repository Creation                    | 10 min         |             |             | Spring Data JPA                 |
+| Service Implementation                 | 1 hour         |             |             | Service layer patterns          |
+| Testing                                | 2 hours        | 1:30 hour   |             | @ActiveProfiles, @Transactional |
+| **Total**                              | **6:30 hours** |             |             |                                 |
 
 ### Optional Part
 
