@@ -1,5 +1,6 @@
 package dev.pronunciationAppBack.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,4 +24,8 @@ public class StageWord {
     @JoinColumn(name = "WORD_ID")
     private Word word;
 
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "STAGE_ID")
+    private Stage stage;
 }
