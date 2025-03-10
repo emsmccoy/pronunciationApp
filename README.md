@@ -91,22 +91,22 @@ classDiagram
 
 - [x] Create Many-to-Many: Word and Category
 
-- [ ] Implement One-to-Many/Many-to-One Relationships
-  
-  [x] Word "1" -- "m" Pronunciation
-  [x] Word "1" -- "m" StageWord
-  Stage "1" -- "m" StageWord
-  Word "m" -- "1" Level 
-  GameProgress "1" -- "m" Stage
-  Stage "m" -- "1" Level
+- [x] Implement One-to-Many/Many-to-One Relationships
 
-- [ ] Configure JPA Annotations
+- [x] Configure JPA Annotations
 
-- [ ] Create Repository Interfaces
+- [x] Create Repository Interfaces
 
 - [ ] Implement Basic Service Methods
 
-- [ ] Test Relationships
+- [ ] Test Relationships:
+  
+  [x] Word "1" -- "m" Pronunciation
+  [x] Word "1" -- "m" StageWord
+  [x] Stage "1" -- "m" StageWord
+  [x] Word "m" -- "1" Level 
+  [x] GameProgress "1" -- "m" Stage
+  Stage "m" -- "1" Level
 
 - [ ] Data Auditing
 
@@ -133,11 +133,11 @@ classDiagram
 | Model Review                           | 15 min         | 10 min      |             | JPA mapping                     |
 | One-to-One (User-App and GameProgress) | 15 min         | 30 min      |             | Enums (@Enumerated annotation)  |
 | Many-to-Many (Word - Category)         | 15 min         | 30 min      |             | Join Table configuration        |
-| One-to-Many & Many-to-One              | 1:30 hours     |             |             |                                 |
+| One-to-Many & Many-to-One              | 1:30 hours     | 2 hours     |             |                                 |
 | Relationship Configuration             | 1 hour         |             |             | Cascade types                   |
-| Repository Creation                    | 10 min         |             |             | Spring Data JPA                 |
+| Repository Creation                    | 10 min         | 10 min      |             | Spring Data JPA                 |
 | Service Implementation                 | 1 hour         |             |             | Service layer patterns          |
-| Testing                                | 2 hours        | 1:30 hour   |             | @ActiveProfiles, @Transactional |
+| Testing                                | 2 hours        | 2:30 hour   |             | @ActiveProfiles, @Transactional |
 | **Total**                              | **6:30 hours** |             |             |                                 |
 
 ### Optional Part

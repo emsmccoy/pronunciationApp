@@ -1,3 +1,5 @@
+package dev.pronunciationAppBack;
+
 import dev.pronunciationAppBack.model.Stage;
 import dev.pronunciationAppBack.model.StageWord;
 import dev.pronunciationAppBack.model.Status;
@@ -13,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
-public class ManyToOne_bi_StageStageWordTest {
+public class ManyToOne_bidirectional_StageStageWordTest {
 
     @Autowired
     private StageRepository stageRepository;
@@ -25,6 +27,7 @@ public class ManyToOne_bi_StageStageWordTest {
     void StageStageWordRelationshipTest() {
         // Create a stage object
         Stage stage = new Stage();
+        stage.setId("st001");
         stage.setName("Test Stage");
         stage.setAvatarUrl("test-url");
         stage.setStatus("active");
@@ -38,8 +41,11 @@ public class ManyToOne_bi_StageStageWordTest {
 
         // Create a StageWord object
         StageWord stageWord = new StageWord();
+        stageWord.setId("w001");
         stageWord.setStatus(Status.PENDING);
+        stageWord.setListenedQty(0);
         stageWord.setLastUpdatedDateTime(new Date());
+        stageWord.setWord(null);
         stageWord.setStage(savedStage);
 
         // Save the StageWord in the repository

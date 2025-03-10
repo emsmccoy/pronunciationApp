@@ -1,12 +1,13 @@
 package dev.pronunciationAppBack.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,9 +25,16 @@ public class Stage {
     private String status;
     private int progress;
     private int currentScore;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "GAME_PROGRESS_ID")
     private GameProgress gameProgress;
+
+    @ManyToOne
+    @JoinColumn(name = "LEVEL_ID")
     private Level level;
 
     @OneToMany(mappedBy = "stage")
-    private List<StageWord> stageWords;
+    private List<StageWord> stageWords = new ArrayList<>();
 }

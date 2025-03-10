@@ -48,7 +48,7 @@ public class ManyToMany_WordCategoryTest {
         word.setCommon(true);
         word.setSentence("The lion is known as the king of the jungle.");
         word.setActive(true);
-        word.setLevel(2);
+        word.setLevel(null);
 
         // save both in repository
         wordRepository.save(word);

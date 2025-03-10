@@ -37,7 +37,7 @@ public class ManyToOne_unidirectional_StageWordWordTest {
         word.setCommon(true);
         word.setSentence("The lion is known as the king of the jungle.");
         word.setActive(true);
-        word.setLevel(2);
+        word.setLevel(null);
 
         wordRepository.save(word);
 
