@@ -31,6 +31,7 @@ public class Stage {
     @JoinColumn(name = "GAME_PROGRESS_ID")
     private GameProgress gameProgress;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "LEVEL_ID")
     private Level level;
