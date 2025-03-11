@@ -99,14 +99,19 @@ classDiagram
 
 - [ ] Implement Basic Service Methods
 
-- [ ] Test Relationships:
+- [x] Test Relationships:
   
-  [x] Word "1" -- "m" Pronunciation
-  [x] Word "1" -- "m" StageWord
-  [x] Stage "1" -- "m" StageWord
-  [x] Word "m" -- "1" Level 
-  [x] GameProgress "1" -- "m" Stage
-  Stage "m" -- "1" Level
+  - [x] Word "1" -- "m" Pronunciation
+  
+  - [x] Word "1" -- "m" StageWord
+  
+  - [x] Stage "1" -- "m" StageWord
+  
+  - [x] Word "m" -- "1" Level 
+  
+  - [x] GameProgress "1" -- "m" Stage
+  
+  - [x] Stage "m" -- "1" Level
 
 - [ ] Data Auditing
 
