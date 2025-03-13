@@ -190,3 +190,5 @@ classDiagram
 ## Future Improvements
 
 - **Caching Mechanism** - Add Hibernate second-level cache configuration
+
+small change
