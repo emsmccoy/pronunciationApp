@@ -191,4 +191,4 @@ classDiagram
 
 - **Caching Mechanism** - Add Hibernate second-level cache configuration
 
-small change
+smol change
